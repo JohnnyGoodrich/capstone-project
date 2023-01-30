@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import '../style/AddFood.css'
 
 function AddFood() {
     const params = useParams()
@@ -16,6 +17,23 @@ function AddFood() {
 
     const URL = "http://localhost:4000/food"
     const URL2 = `http://localhost:4000/food/${id}`
+
+    // get foods
+    const getFoods = async () => {
+        try {
+
+            const response = await fetch(URL)
+            const foundFood = await response.json()
+            setFood(foundFood)
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        getFoods()
+    }, [])
 
     // handlechange and handlesubmit
     const handleChange = (e) => {
@@ -59,7 +77,7 @@ function AddFood() {
     const loaded = () => (
         <div>
             <form className='rating-form' onSubmit={handleSubmit}>
-                <h2 className='section-header'>Create a new Review</h2>
+                <h2 className='section-header'>Create a New Food</h2>
                 <div className='create-review'>
                     <label className='comment-label' htmlFor='title'>
                         <div>Name</div>
@@ -146,10 +164,33 @@ function AddFood() {
 
                     <br />
                     <div className='button'>
-                        <button type="submit" value="Post Review">Post Review</button>
+                        <button type="submit" value="Post Review">Create Food</button>
                     </div>
                 </div>
             </form>
+            {food ? (
+                food.map((foods, index) => {
+                    return (
+                        <div key={foods._id} className='review-list'>
+                            <div className='edit'>
+                                <div className='foods'>
+
+                                    <p className='rating-number'>Name: {foods.name}</p>
+                                    <p className='rating-number'>Calories: {foods.calories}</p>
+                                    <p className='rating-number'>Protein: {foods.protein}</p>
+                                    <p className='rating-number'>Carbs: {foods.carbohydrates}</p>
+                                    <p className='rating-number'>Fat: {foods.fat}</p>
+                                    <img className='rating-number' src={foods.image} height="100px"/>
+                                    {/* <p className='review-comment'>"{review.comment}"</p> */}
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })
+            ) : (<p> No reviews for this product </p>)}
+            <div>
+
+            </div>
         </div>
     )
 
