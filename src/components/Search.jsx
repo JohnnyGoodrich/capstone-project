@@ -58,6 +58,9 @@ const Search = (props) => {
                     ))
                 }
             </div>
+            <Link style={{ textDecoration: 'none' }} to={`/newfood`}>
+                    <button>Add New Food</button>
+            </Link>
         </div>
     )
 }

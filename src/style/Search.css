@@ -41,7 +41,8 @@ input {
     width: 50%;
     max-width: 700px;
     min-width:400px;
-    padding-left: 20px;
+    /* padding-left: 20px; */
+    margin: 0 auto;
     
 }
 .drop-down-list {

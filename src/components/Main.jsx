@@ -2,6 +2,7 @@ import { useState } from "react";
 import '../App.css'
 import Search from "./Search";
 import myFunction from "./SearchBar";
+import { Link } from 'react-router-dom'
 
 function Main() {
     const [toggleState, setToggleState] = useState(1);
@@ -54,7 +55,6 @@ function Main() {
                     <Search/>
                     {/* <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"></input>
                     <ul id="myUL">
-            
                     </ul> */}
                 </div>
             </div>
