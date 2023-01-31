@@ -99,7 +99,6 @@ function AddFood() {
                             name="calories"
                             // placeholder="1-100"
                             min="0"
-                            max="100"
                             autoComplete='off'
                             value={editForm.calories}
                             onChange={handleChange}
@@ -113,7 +112,6 @@ function AddFood() {
                             name="protein"
                             // placeholder="1-100"
                             min="0"
-                            max="100"
                             autoComplete='off'
                             value={editForm.protein}
                             onChange={handleChange}
@@ -127,7 +125,6 @@ function AddFood() {
                             name="carbs"
                             // placeholder="1-100"
                             min="0"
-                            max="100"
                             autoComplete='off'
                             value={editForm.carbs}
                             onChange={handleChange}
@@ -141,7 +138,6 @@ function AddFood() {
                             name="fat"
                             // placeholder="1-100"
                             min="0"
-                            max="100"
                             autoComplete='off'
                             value={editForm.fat}
                             onChange={handleChange}
@@ -155,7 +151,6 @@ function AddFood() {
                             name="image"
                             // placeholder="1-100"
                             min="0"
-                            max="100"
                             autoComplete='off'
                             value={editForm.image}
                             onChange={handleChange}
@@ -168,26 +163,28 @@ function AddFood() {
                     </div>
                 </div>
             </form>
-            {food ? (
-                food.map((foods, index) => {
-                    return (
-                        <div key={foods._id} className='review-list'>
-                            <div className='edit'>
-                                <div className='foods'>
+            <div className='all-foods'>
+                {food ? (
+                    food.map((foods, index) => {
+                        return (
+                            <div key={foods._id} className='food-list'>
+                                <div className='edit'>
+                                    <div className='foods'>
 
-                                    <p className='rating-number'>Name: {foods.name}</p>
-                                    <p className='rating-number'>Calories: {foods.calories}</p>
-                                    <p className='rating-number'>Protein: {foods.protein}</p>
-                                    <p className='rating-number'>Carbs: {foods.carbohydrates}</p>
-                                    <p className='rating-number'>Fat: {foods.fat}</p>
-                                    <img className='rating-number' src={foods.image} height="100px"/>
-                                    {/* <p className='review-comment'>"{review.comment}"</p> */}
+                                        <p className='rating-number'>Name: {foods.name}</p>
+                                        <p className='rating-number'>Calories: {foods.calories}</p>
+                                        <p className='rating-number'>Protein: {foods.protein}</p>
+                                        <p className='rating-number'>Carbs: {foods.carbohydrates}</p>
+                                        <p className='rating-number'>Fat: {foods.fat}</p>
+                                        <img className='rating-number' src={foods.image} height="100px" />
+                                        {/* <p className='review-comment'>"{review.comment}"</p> */}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    )
-                })
-            ) : (<p> No reviews for this product </p>)}
+                        )
+                    })
+                ) : (<p> No reviews for this product </p>)}
+            </div>
             <div>
 
             </div>
