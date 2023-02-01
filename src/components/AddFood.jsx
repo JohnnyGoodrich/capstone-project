@@ -183,7 +183,7 @@ function AddFood() {
                             </div>
                         )
                     })
-                ) : (<p> No reviews for this product </p>)}
+                ) : (<p> No foods to show </p>)}
             </div>
             <div>
 
