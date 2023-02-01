@@ -123,23 +123,23 @@ const Search = (props) => {
         console.log("hello" + addFood)
         const currentState = addFood
         // need to await addfood before post? 
-        const foodResponse = await fetch(`http://localhost:4000/food/${e.target.value}`)
-        const foundFood = await foodResponse.json()
-        console.log(foundFood)
         try {
+            const foodResponse = await fetch(`http://localhost:4000/food/${e.target.value}`)
+            const foundFood = await foodResponse.json()
+            console.log(mealURL, foundFood)
             const requestOptions = {
-                mode: "no-cors",
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     // Authorization: `Bearer ${token}`
                 },
-                // body: JSON.stringify(currentState)
-                body: foundFood
+                body: JSON.stringify(foundFood)
+                // body: foundFood
 
             }
 
             const postResponse = await fetch(mealURL, requestOptions)
+            console.log(postResponse)
             const createdMealItem = await postResponse.json()
             setMealItem([...mealItem, createdMealItem])
 
@@ -216,8 +216,8 @@ const Search = (props) => {
                                         </div>
                                         <div>
                                             <img className='' src={mealItems.image} height="100px" />
-
                                         </div>
+                                        {/* <button key={index} value={mealItems._id} onClick={handleSubmit}>Add</button> */}
                                     </div>
                                 </div>
                             </div>
