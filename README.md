@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# Macro Tracker
+## Scope
+For my capstone project I will be creating a fitness app that allows the user to log in their food for the day in order to track their nutrional in-take for the day (calories and macro-nutrients)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## User Story
+* As a user I want to be able to sign-up/sign-in so I can have a profile that saves my data
+* As a user I want to be able to set daily calorie and nutritient goals for the day
+* As a user I want to be able to log my food consumed throughout the day and save my meals
+* As a user I want to be able to see my progress toward my calorie and nutrient goals displayed 
 
-## Available Scripts
+## Wireframes
+![image](https://user-images.githubusercontent.com/116520614/215365287-912e6138-d87e-4457-b1aa-c93db428b3d2.png)
+![image](https://user-images.githubusercontent.com/116520614/215365360-9cd9d2cb-5759-4ba4-9746-5309d3135a87.png)
+![image](https://user-images.githubusercontent.com/116520614/215365738-163c4a83-bfb9-430a-89c2-6d06ecb83469.png)
+![image](https://user-images.githubusercontent.com/116520614/215365616-c5abf444-3eb8-4d8f-ad26-4ad9ff101d0f.png)
+![image](https://user-images.githubusercontent.com/116520614/215365798-f9f27cdd-e7e8-4466-9740-4ac59c5cc3cf.png)
+![image](https://user-images.githubusercontent.com/116520614/215366035-151429ea-c545-4926-9315-dbe89a000fc4.png)
 
-In the project directory, you can run:
+## User Flow
+![image](https://user-images.githubusercontent.com/116520614/215366078-33e11796-ad95-448e-bb4e-0531b879158b.png)
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Milestones
+1) Full CRUD for being able to log food consumed/post new foods 
+2) Authentication
+4) Allow user to save meals 
+### Stretch goals: 
+* Allow user to select time zone
+* Have the daily nutrional data reset at the end of the day
+* Advanced CSS animations and transistions
