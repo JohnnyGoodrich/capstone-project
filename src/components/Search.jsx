@@ -10,10 +10,10 @@ const Search = (props) => {
     const [food, setFood] = useState(null)
     const [mealItem, setMealItem] = useState(null)
     const [meal, setMeal] = useState(null)
+    const [addFood, setAddFood] = useState(null)
     const params = useParams()
     const { id } = params
 
-    const BASE_URL = `https://movie-backend-project3.herokuapp.com/movie`
     const URL = "http://localhost:4000/food"
     const mealURL = `http://localhost:4000/meal/63d98149c8ac5f0cc6197613`
     const URL2 = `http://localhost:4000/food/${id}`
@@ -45,6 +45,7 @@ const Search = (props) => {
 
     useEffect(() => {
         getMeal()
+        console.log(mealItem)
     }, [])
 
 
@@ -54,30 +55,107 @@ const Search = (props) => {
     const onSearch = (searchItem) => {
         setSearchValue(searchItem)
     }
+    // Adding items to the backend
 
-    
-    const addItem = async(item)=>{
-        let itemObject = new Object()
-        for(let i =0; i<food.length; i++){
-            console.log(food[i].name.length)
-            console.log(item.length)
-
-            if (food[i].name === item){
-                itemObject = food[i] 
-
-            }
-        }
-        console.log(itemObject)
-        mealItem.push(itemObject) 
-        console.log(mealItem)
-
-    }
-    // async function addItem(){
-    //     console
+    // handle submit
+    // const handleChange = (e) => {
+    //     const userInput = { ...mealItem }
+    //     userInput[e.target.name] = e.target.value
+    //     setMealItem(userInput)
     // }
 
-    const deleteItem = async()=>{
-        mealItem.pop(food[2]) 
+    // const handleSubmit = async (e) => {
+    //     // e.preventDefault()
+    //     const currentState = { ...mealItem }
+
+    //     try {
+    //         const requestOptions = {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 // Authorization: `Bearer ${token}`
+    //             },
+    //             body: JSON.stringify(currentState)
+
+    //         }
+    //         const response = await fetch(mealURL, requestOptions)
+    //         const createdMealItem = await response.json()
+    //         setMealItem([...mealItem, createdMealItem])
+
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
+
+    // adding an item
+    // const addItem = async(item)=>{
+    //     let itemObject = new Object()
+    //     for(let i =0; i<food.length; i++){
+    //         if (food[i].name === item){
+    //             itemObject = food[i] 
+    //         }
+    //     }
+    //     mealItem.push(itemObject)
+    //     handleSubmit()
+    //     // handleChange()
+    //     console.log(itemObject)
+    //     console.log(mealItem)
+
+    // }
+
+    // create handlesubmit 
+    const getfood = async (e) => {
+        try {
+            const response = await fetch(`http://localhost:4000/food/${e.target.value}`)
+            const foundFood = await response.json()
+            console.log(foundFood)
+            setAddFood(foundFood)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        // setAddFood(e.target.value)
+        // update mealItem in state to include our new item
+        // setMealItem({...mealItem}+ e.target.value)
+        // getfood(e)
+        console.log("hello" + addFood)
+        const currentState = addFood
+        // need to await addfood before post? 
+        const foodResponse = await fetch(`http://localhost:4000/food/${e.target.value}`)
+        const foundFood = await foodResponse.json()
+        console.log(foundFood)
+        try {
+            const requestOptions = {
+                mode: "no-cors",
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    // Authorization: `Bearer ${token}`
+                },
+                // body: JSON.stringify(currentState)
+                body: foundFood
+
+            }
+
+            const postResponse = await fetch(mealURL, requestOptions)
+            const createdMealItem = await postResponse.json()
+            setMealItem([...mealItem, createdMealItem])
+
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+    // post that mealItem to the DB
+    // refresh screen to include new items
+
+
+
+
+    const deleteItem = async () => {
+        mealItem.pop(food[2])
 
     }
 
@@ -114,10 +192,10 @@ const Search = (props) => {
                     }
                 </div>
             </div>
-                    <button >Add</button>
+            <button >Add</button>
             <div>
                 {meal ? (
-                  <div>{meal.title}</div>
+                    <div>{meal.title}</div>
                 ) : (<p>No meals to show</p>)}
 
             </div>
@@ -134,11 +212,11 @@ const Search = (props) => {
                                             <div className=''>Protein: {mealItems.protein}</div>
                                             <div className=''>Carbs: {mealItems.carbohydrates}</div>
                                             <div className=''>Fat: {mealItems.fat}</div>
-                                            
+
                                         </div>
                                         <div>
                                             <img className='' src={mealItems.image} height="100px" />
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +244,20 @@ const Search = (props) => {
                                         </div>
                                         <div>
                                             <img className='' src={foods.image} height="100px" />
-                                            <button key={index} onClick={()=> addItem(foods.name)}>Add</button>
+                                            {/* <button key={index} onClick={()=> addItem(foods.name)}>Add</button> */}
+                                            <button key={index} value={foods._id} onClick={handleSubmit}>Add</button>
+                                            {/* <form onSubmit={handleSubmit}>
+                                                <input
+                                                type="hidden"
+                                                value={foods.name}
+                                                />
+                                                <input
+                                                type="submit"
+                                                value="submit"
+                                                
+                                                />
+
+                                            </form> */}
                                         </div>
                                     </div>
                                 </div>
