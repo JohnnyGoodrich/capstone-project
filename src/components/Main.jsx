@@ -3,6 +3,7 @@ import '../App.css'
 import Search from "./Search";
 import myFunction from "./SearchBar";
 import { Link } from 'react-router-dom'
+import Today from "./Today";
 
 function Main() {
     let pageNumber = 1
@@ -50,8 +51,7 @@ function Main() {
                 </div>
 
                 <div className={toggleState === 2 ? "content  active-content" : "content"}>
-                    <h2>Content 2</h2>
-                    <hr />
+                    <Today/>
                     {/* <p>
                       Content
                     </p> */}

@@ -13,6 +13,7 @@ const Search = (props) => {
     const [meal, setMeal] = useState(null)
     const [addFood, setAddFood] = useState(null)
     const [deleteFood, setDeleteFood] = useState(null)
+    const [averageRating, setAverageRating] = useState(0)
     const params = useParams()
     const navigate = useNavigate()
     const { id } = params
@@ -193,10 +194,51 @@ const Search = (props) => {
         
         }
     }
-    
+    useEffect(() => {
+        average()
+    }, [mealItem])
+
+    let items = document.querySelectorAll('.progress-item');
+    const counters = Array(items.length);
+    const intervals = Array(items.length);
+    counters.fill(0);
+    items.forEach((number,index) => {
+      intervals[index] = setInterval(() => {
+              if(counters[index] == parseInt(number.dataset.num)){
+                  clearInterval(intervals[index]);
+              }else{
+                  counters[index] += 1;
+                  number.style.background = "conic-gradient(aqua calc(" + counters[index] + "%), gray 0deg)";
+                  number.setAttribute('data-value', counters[index] + "%");
+                  number.innerHTML = counters[index] + "%";
+              }
+      }, 15);
+     });
+
+    async function average() {
+        const array = []
+        let sum = 0
+        let calorieGoal = 2000
+        try {
+            for (let i = 0; i < mealItem.length; i++) {
+                let num = sum/calorieGoal
+                array.push(mealItem[i].calories)
+                sum += array[i]
+                console.log(mealItem[i].calories)
+                console.log((sum/calorieGoal)*100)
+
+            }
+            setAverageRating((sum/calorieGoal)*100 )
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     return (
         <div className="search-context">
+              <div id="progress" >
+                <div data-num={averageRating} className="progress-item">ds</div>
+            </div>
             <div className='search-context2'>
                 <div className="search-context-inner">
                     <p id="look-up-symbol">{<BsSearch />}</p>
