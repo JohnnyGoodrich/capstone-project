@@ -22,7 +22,7 @@ const Search = (props) => {
     const mealURL = `http://localhost:4000/meal/63d98149c8ac5f0cc6197613`
     const mealItemURL = `http://localhost:4000/meal/edit/${id}`
     const URL2 = `http://localhost:4000/food/${id}`
-    const API = `https://api.spoonacular.com/food/products/search?apiKey=e8df648355c643e0bbdeb40a2bc8ce03&query=chicken&number=10`
+    const API = `https://api.edamam.com/api/nutrition-data?app_id=bb62f382&app_key=6504bb61e928acc7fad1e6d78d60ff28&nutrition-type=logging&ingr=chicken`
 
 
     const getFoods = async () => {
@@ -36,24 +36,26 @@ const Search = (props) => {
     }
     useEffect(() => {
         getFoods()
-      
+
     }, [])
     const getAPI = async () => {
         try {
             const response = await fetch(API)
             const foundFood = await response.json()
-            setApiFoods(foundFood.products)
+            setApiFoods(foundFood.ingredients)
+            console.log(foundFood.totalNutrients.CHOCDF.quantity)
+            console.log(foundFood.ingredients)
         } catch (err) {
             console.log(err)
         }
     }
     useEffect(() => {
         getAPI()
-      
-    }, [])
-    
 
-    
+    }, [])
+
+
+
     const getMeal = async () => {
         try {
             const response = await fetch(mealURL)
@@ -68,7 +70,7 @@ const Search = (props) => {
 
     useEffect(() => {
         getMeal()
-        console.log(mealItem)
+        // console.log(mealItem)
     }, [])
 
 
@@ -184,14 +186,14 @@ const Search = (props) => {
                 }
             }
             setDeleteFood([mealItem])
-         
+
             const response = await fetch(`http://localhost:4000/meal/edit/${e.target.value}`, options)
             // const createdMealItem = await response.json()
             // setMealItem([mealItem])
             navigate(0)
         } catch (err) {
             console.log(err)
-        
+
         }
     }
     useEffect(() => {
@@ -202,18 +204,18 @@ const Search = (props) => {
     const counters = Array(items.length);
     const intervals = Array(items.length);
     counters.fill(0);
-    items.forEach((number,index) => {
-      intervals[index] = setInterval(() => {
-              if(counters[index] == parseInt(number.dataset.num)){
-                  clearInterval(intervals[index]);
-              }else{
-                  counters[index] += 1;
-                  number.style.background = "conic-gradient(aqua calc(" + counters[index] + "%), gray 0deg)";
-                  number.setAttribute('data-value', counters[index] + "%");
-                  number.innerHTML = counters[index] + "%";
-              }
-      }, 15);
-     });
+    items.forEach((number, index) => {
+        intervals[index] = setInterval(() => {
+            if (counters[index] == parseInt(number.dataset.num)) {
+                clearInterval(intervals[index]);
+            } else {
+                counters[index] += 1;
+                number.style.background = "conic-gradient(aqua calc(" + counters[index] + "%), gray 0deg)";
+                number.setAttribute('data-value', counters[index] + "%");
+                number.innerHTML = counters[index] + "%";
+            }
+        }, 15);
+    });
 
     async function average() {
         const array = []
@@ -221,14 +223,14 @@ const Search = (props) => {
         let calorieGoal = 2000
         try {
             for (let i = 0; i < mealItem.length; i++) {
-                let num = sum/calorieGoal
+                let num = sum / calorieGoal
                 array.push(mealItem[i].calories)
                 sum += array[i]
-                console.log(mealItem[i].calories)
-                console.log((sum/calorieGoal)*100)
+                // console.log(mealItem[i].calories)
+                // console.log((sum / calorieGoal) * 100)
 
             }
-            setAverageRating((sum/calorieGoal)*100 )
+            setAverageRating((sum / calorieGoal) * 100)
         } catch (err) {
             console.log(err)
         }
@@ -236,7 +238,7 @@ const Search = (props) => {
 
     return (
         <div className="search-context">
-              <div id="progress" >
+            <div id="progress" >
                 <div data-num={averageRating} className="progress-item">ds</div>
             </div>
             <div className='search-context2'>
@@ -248,26 +250,26 @@ const Search = (props) => {
                     </Link>
                 </div>
                 <div className="drop-down-list">
-                    {Object.values(movies).filter((movie) => {
+                    {/* {Object.values(apiFoods).filter((food) => {
                         const searchItem = searchValue.toLowerCase()
-                        const movieTitle = movie.title.toLowerCase()
-                        return (searchItem && movieTitle.startsWith(searchItem) && movieTitle !== searchItem)
+                        const foodTitle = food.title.toLowerCase()
+                        return (searchItem && foodTitle.startsWith(searchItem) && foodTitle !== searchItem)
                     })
                         .slice(0, 8)
-                        .map((movie, idx) => (
-                            <div onClick={() => onSearch(movie)} className="drop-down-row" key={idx}>
-                                <Link style={{ textDecoration: 'none' }} key={movie._id} to={`/review/${movie._id}`}>
+                        .map((food, idx) => (
+                            <div onClick={() => onSearch(food)} className="drop-down-row" key={idx}>
+                                <Link style={{ textDecoration: 'none' }} key={food._id} to={`/review/${food._id}`}>
                                     <div className='drop-down-info'>
-                                        <img id="search-image" style={{ borderRadius: '10px' }} src={movie.image} alt="" />
+                                        <img id="search-image" style={{ borderRadius: '10px' }} src={food.image} alt="" />
                                         <div>
-                                            <div id="search-title" style={{ textDecoration: 'none' }}>{movie.title}</div>
-                                            <p className='movie-info-search'><span className='age-rating'>{movie.agerating}</span>&nbsp; {movie.year}, {movie.hlength}h{movie.mlength}m</p>
+                                            <div id="search-title" style={{ textDecoration: 'none' }}>{food.title}</div>
+                                            <p className='movie-info-search'><span className='age-rating'>{food.agerating}</span>&nbsp; {food.year}, {food.hlength}h{food.mlength}m</p>
                                         </div>
                                     </div>
                                 </Link>
                             </div>
                         ))
-                    }
+                    } */}
                 </div>
             </div>
             <button >Add</button>
@@ -323,7 +325,7 @@ const Search = (props) => {
                                         <div>
                                             <img className='' src={foods.image} height="100px" />
                                             <button key={index} value={foods._id} onClick={handleSubmit}>Add</button>
-                                          
+
                                         </div>
                                     </div>
                                 </div>
@@ -340,16 +342,16 @@ const Search = (props) => {
                                 <div className='edit'>
                                     <div className='foods2'>
                                         <div className='food-text'>
-                                            <div className=''>Name: {foods.name}</div>
+                                            <div className=''>Name: {foods.text}</div>
                                             <div className=''>Calories: {foods.calories}</div>
                                             <div className=''>Protein: {foods.protein}</div>
-                                            <div className=''>Carbs: {foods.carbohydrates}</div>
+                                            <div className=''>Carbs: {foods.quantity}</div>
                                             <div className=''>Fat: {foods.fat}</div>
                                         </div>
                                         <div>
                                             <img className='' src={foods.image} height="100px" />
                                             <button key={index} value={foods._id} onClick={handleSubmit}>Add</button>
-                                          
+
                                         </div>
                                     </div>
                                 </div>
