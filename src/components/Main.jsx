@@ -5,30 +5,36 @@ import myFunction from "./SearchBar";
 import { Link } from 'react-router-dom'
 
 function Main() {
-    const [toggleState, setToggleState] = useState(1);
+    let pageNumber = 1
+    const [toggleState, setToggleState] = useState(3);
 
     const toggleTab = (index) => {
         setToggleState(index);
     };
-
+    const setClick = (page)=>{
+        toggleTab(page)
+        pageNumber=page
+        console.log(page)
+    }
+    console.log(pageNumber)
     return (
         <div className="container1">
             <div className="bloc-tabs">
                 <button
                     className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
-                    onClick={() => toggleTab(1)}
+                    onClick={() => setClick(1)}
                 >
                     Home
                 </button>
                 <button
                     className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
-                    onClick={() => toggleTab(2)}
+                    onClick={() => setClick(2)}
                 >
                     Today's Progress
                 </button>
                 <button
                     className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
-                    onClick={() => toggleTab(3)}
+                    onClick={() => setClick(3)}
                 >
                     Input Food
                 </button>

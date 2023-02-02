@@ -8,15 +8,21 @@ const Search = (props) => {
     const [searchValue, setSearchValue] = useState('')
     const [movies, setMovies] = useState('')
     const [food, setFood] = useState(null)
+    const [apiFoods, setApiFoods] = useState(null)
     const [mealItem, setMealItem] = useState(null)
     const [meal, setMeal] = useState(null)
     const [addFood, setAddFood] = useState(null)
+    const [deleteFood, setDeleteFood] = useState(null)
     const params = useParams()
+    const navigate = useNavigate()
     const { id } = params
 
     const URL = "http://localhost:4000/food"
     const mealURL = `http://localhost:4000/meal/63d98149c8ac5f0cc6197613`
+    const mealItemURL = `http://localhost:4000/meal/edit/${id}`
     const URL2 = `http://localhost:4000/food/${id}`
+    const API = `https://api.spoonacular.com/food/products/search?apiKey=e8df648355c643e0bbdeb40a2bc8ce03&query=chicken&number=10`
+
 
     const getFoods = async () => {
         try {
@@ -27,10 +33,26 @@ const Search = (props) => {
             console.log(err)
         }
     }
-
     useEffect(() => {
         getFoods()
+      
     }, [])
+    const getAPI = async () => {
+        try {
+            const response = await fetch(API)
+            const foundFood = await response.json()
+            setApiFoods(foundFood.products)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        getAPI()
+      
+    }, [])
+    
+
+    
     const getMeal = async () => {
         try {
             const response = await fetch(mealURL)
@@ -150,14 +172,28 @@ const Search = (props) => {
     }
     // post that mealItem to the DB
     // refresh screen to include new items
-
-
-
-
-    const deleteItem = async () => {
-        mealItem.pop(food[2])
-
+    const removeItem = async (e) => {
+        // e.preventDefault()
+        const removedItem = e.target.value
+        try {
+            const options = {
+                method: "DELETE",
+                headers: {
+                    // Authorization: `Bearer ${token}`
+                }
+            }
+            setDeleteFood([mealItem])
+         
+            const response = await fetch(`http://localhost:4000/meal/edit/${e.target.value}`, options)
+            // const createdMealItem = await response.json()
+            // setMealItem([mealItem])
+            navigate(0)
+        } catch (err) {
+            console.log(err)
+        
+        }
     }
+    
 
     return (
         <div className="search-context">
@@ -217,7 +253,7 @@ const Search = (props) => {
                                         <div>
                                             <img className='' src={mealItems.image} height="100px" />
                                         </div>
-                                        {/* <button key={index} value={mealItems._id} onClick={handleSubmit}>Add</button> */}
+                                        <button key={index} value={mealItems._id} onClick={removeItem}>Remove</button>
                                     </div>
                                 </div>
                             </div>
@@ -244,20 +280,34 @@ const Search = (props) => {
                                         </div>
                                         <div>
                                             <img className='' src={foods.image} height="100px" />
-                                            {/* <button key={index} onClick={()=> addItem(foods.name)}>Add</button> */}
                                             <button key={index} value={foods._id} onClick={handleSubmit}>Add</button>
-                                            {/* <form onSubmit={handleSubmit}>
-                                                <input
-                                                type="hidden"
-                                                value={foods.name}
-                                                />
-                                                <input
-                                                type="submit"
-                                                value="submit"
-                                                
-                                                />
-
-                                            </form> */}
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                ) : (<p> No foods to show </p>)}
+            </div>
+            <div className='all-foods2'>
+                {apiFoods ? (
+                    apiFoods.map((foods, index) => {
+                        return (
+                            <div key={foods._id} className='food-list'>
+                                <div className='edit'>
+                                    <div className='foods2'>
+                                        <div className='food-text'>
+                                            <div className=''>Name: {foods.name}</div>
+                                            <div className=''>Calories: {foods.calories}</div>
+                                            <div className=''>Protein: {foods.protein}</div>
+                                            <div className=''>Carbs: {foods.carbohydrates}</div>
+                                            <div className=''>Fat: {foods.fat}</div>
+                                        </div>
+                                        <div>
+                                            <img className='' src={foods.image} height="100px" />
+                                            <button key={index} value={foods._id} onClick={handleSubmit}>Add</button>
+                                          
                                         </div>
                                     </div>
                                 </div>
