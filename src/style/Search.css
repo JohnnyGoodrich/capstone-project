@@ -123,6 +123,7 @@ input {
     font-size: 10px;
 }
 .all-foods2{
+    border-bottom: 1px solid grey;
     justify-self: start;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -149,4 +150,34 @@ input {
     /* word-break: break-all; */
     border: 1px solid rgba(0, 0, 0, 0.274);
     border-bottom: none;
+  }
+.container2 {
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    width: 1000px;
+    background: white;
+    margin: 400px auto 0;
+    /* word-break: break-all; */
+    border: 1px solid rgba(0, 0, 0, 0.274);
+    border-bottom: none;
+  }
+.container3 {
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    width: 500px;
+    background: white;
+    margin: 400px auto 0;
+    /* word-break: break-all; */
+    border: 1px solid rgba(0, 0, 0, 0.274);
+    border-bottom: none;
+  }
+  h4{
+    padding-top: 15px;
+    padding-bottom: 15px;
   }

@@ -31,4 +31,38 @@
     grid-auto-rows: auto;
     color: rgb(85, 84, 84);
   }
+  .name{
+    background-color: rgb(203, 205, 205);
+    width: 200px;
+  }
+  .calories{
+    background-color: rgb(203, 205, 205);
+    width: 200px;
+  }
+  .protein{
+    background-color: rgb(203, 205, 205);
+    width: 200px;
+  }
+  .carbs{
+    background-color: rgb(203, 205, 205);
+    width: 200px;
+  }
+  .fat{
+    background-color: rgb(203, 205, 205);
+    width: 200px;
+  }
+  .create-rview{
+    display: flex;
+    flex-direction: column;
+  }
 
+  .food-details{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .edit-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

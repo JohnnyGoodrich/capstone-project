@@ -230,7 +230,12 @@ const Search = (props) => {
                 // console.log((sum / calorieGoal) * 100)
 
             }
-            setAverageRating((sum / calorieGoal) * 100)
+            if (sum > calorieGoal){
+                setAverageRating(100)
+            }else{
+
+                setAverageRating((sum / calorieGoal) * 100)
+            }
         } catch (err) {
             console.log(err)
         }
@@ -297,8 +302,8 @@ const Search = (props) => {
                                         </div>
                                         <div>
                                             <img className='' src={mealItems.image} height="100px" />
+                                            <button key={index} value={mealItems._id} onClick={removeItem}>Remove</button>
                                         </div>
-                                        <button key={index} value={mealItems._id} onClick={removeItem}>Remove</button>
                                     </div>
                                 </div>
                             </div>
@@ -335,7 +340,7 @@ const Search = (props) => {
                     })
                 ) : (<p> No foods to show </p>)}
             </div>
-            <div className='all-foods2'>
+            {/* <div className='all-foods2'>
                 {apiFoods ? (
                     apiFoods.map((foods, index) => {
                         return (
@@ -360,7 +365,7 @@ const Search = (props) => {
                         )
                     })
                 ) : (<p> No foods to show </p>)}
-            </div>
+            </div> */}
 
         </div>
     )

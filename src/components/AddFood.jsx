@@ -1,6 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import '../style/AddFood.css'
+import { Link } from 'react-router-dom'
+
 
 function AddFood() {
     const params = useParams()
@@ -75,7 +77,7 @@ function AddFood() {
 
 
     const loaded = () => (
-        <div>
+        <div className='container2'>
             <form className='rating-form' onSubmit={handleSubmit}>
                 <h2 className='section-header'>Create a New Food</h2>
                 <div className='create-review'>
@@ -85,43 +87,47 @@ function AddFood() {
                             type="text"
                             className="name"
                             name="name"
-                            placeholder="name"
+                            // placeholder="name"
                             autoComplete='off'
                             value={editForm.name}
                             onChange={handleChange}
                         />
                     </label>
-                    <div>Calories</div>
-                    <label htmlFor='title'>
-                        <input
-                            type="number"
-                            className="calories"
-                            name="calories"
-                            // placeholder="1-100"
-                            min="0"
-                            autoComplete='off'
-                            value={editForm.calories}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    <label className='comment-label' htmlFor=''>
-                        <div>Protein</div>
-                        <input
-                            type="number"
-                            className="protein"
-                            name="protein"
-                            // placeholder="1-100"
-                            min="0"
-                            autoComplete='off'
-                            value={editForm.protein}
-                            onChange={handleChange}
-                        />
-                    </label>
+                    <div>
+                        <div>Calories</div>
+                        <label htmlFor='title'>
+                            <input
+                                type="number"
+                                className="name"
+                                name="calories"
+                                // placeholder="1-100"
+                                min="0"
+                                autoComplete='off'
+                                value={editForm.calories}
+                                onChange={handleChange}
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label className='comment-label' htmlFor='title'>
+                            <div>Protein</div>
+                            <input
+                                type="number"
+                                className="name"
+                                name="protein"
+                                // placeholder="1-100"
+                                min="0"
+                                autoComplete='off'
+                                value={editForm.protein}
+                                onChange={handleChange}
+                            />
+                        </label>
+                    </div>
                     <label className='comment-label' htmlFor='title'>
                         <div>Carbs</div>
                         <input
                             type="number"
-                            className="carbs"
+                            className="name"
                             name="carbs"
                             // placeholder="1-100"
                             min="0"
@@ -130,33 +136,36 @@ function AddFood() {
                             onChange={handleChange}
                         />
                     </label>
-                    <label className='comment-label' htmlFor='title'>
-                        <div>Fat</div>
-                        <input
-                            type="number"
-                            className="fat"
-                            name="fat"
-                            // placeholder="1-100"
-                            min="0"
-                            autoComplete='off'
-                            value={editForm.fat}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    <label className='comment-label' htmlFor='title'>
-                        <div>Image</div>
-                        <input
-                            type="text"
-                            className="image"
-                            name="image"
-                            // placeholder="1-100"
-                            min="0"
-                            autoComplete='off'
-                            value={editForm.image}
-                            onChange={handleChange}
-                        />
-                    </label>
-
+                    <div>
+                        <label className='comment-label' htmlFor='title'>
+                            <div>Fat</div>
+                            <input
+                                type="number"
+                                className="name"
+                                name="fat"
+                                // placeholder="1-100"
+                                min="0"
+                                autoComplete='off'
+                                value={editForm.fat}
+                                onChange={handleChange}
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label className='comment-label' htmlFor='title'>
+                            <div>Image</div>
+                            <input
+                                type="text"
+                                className="name"
+                                name="image"
+                                // placeholder="1-100"
+                                min="0"
+                                autoComplete='off'
+                                value={editForm.image}
+                                onChange={handleChange}
+                            />
+                        </label>
+                    </div>
                     <br />
                     <div className='button'>
                         <button type="submit" value="Post Review">Create Food</button>
@@ -169,16 +178,17 @@ function AddFood() {
                         return (
                             <div key={foods._id} className='food-list'>
                                 <div className='edit'>
-                                    <div className='foods'>
-
-                                        <p className='rating-number'>Name: {foods.name}</p>
-                                        <p className='rating-number'>Calories: {foods.calories}</p>
-                                        <p className='rating-number'>Protein: {foods.protein}</p>
-                                        <p className='rating-number'>Carbs: {foods.carbohydrates}</p>
-                                        <p className='rating-number'>Fat: {foods.fat}</p>
-                                        <img className='rating-number' src={foods.image} height="100px" />
-                                        {/* <p className='review-comment'>"{review.comment}"</p> */}
-                                    </div>
+                                    <Link style={{ textDecoration: 'none' }} to={`/newfood/${foods._id}`} className='edit'>
+                                        <div className='foods'>
+                                            <p className='rating-number'>Name: {foods.name}</p>
+                                            <p className='rating-number'>Calories: {foods.calories}</p>
+                                            <p className='rating-number'>Protein: {foods.protein}</p>
+                                            <p className='rating-number'>Carbs: {foods.carbohydrates}</p>
+                                            <p className='rating-number'>Fat: {foods.fat}</p>
+                                            <img className='rating-number' src={foods.image} height="100px" />
+                                            {/* <p className='review-comment'>"{review.comment}"</p> */}
+                                        </div>
+                                    </Link>
                                 </div>
                             </div>
                         )

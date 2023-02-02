@@ -55,7 +55,7 @@ function Today() {
                 number.setAttribute('data-value', counters[index] + "%");
                 number.innerHTML = counters[index] + "%";
             }
-        }, 15);
+        }, 10);
     });
 
     async function average() {
@@ -71,7 +71,12 @@ function Today() {
                 console.log((sum / calorieGoal) * 100)
 
             }
-            setAverageRating((sum / calorieGoal) * 100)
+            if (sum > calorieGoal){
+                setAverageRating(100)
+            }else{
+
+                setAverageRating((sum / calorieGoal) * 100)
+            }
         } catch (err) {
             console.log(err)
         }
@@ -88,8 +93,11 @@ function Today() {
                 console.log(mealItem[i].protein)
                 console.log((sum / proteinGoal) * 100)
 
+            } if (sum>proteinGoal){
+                setAverageProteinNum(100)
+            }else{
+                setAverageProteinNum((sum / proteinGoal) * 100)
             }
-            setAverageProteinNum((sum / proteinGoal) * 100)
         } catch (err) {
             console.log(err)
         }
@@ -106,8 +114,11 @@ function Today() {
                 console.log(mealItem[i].carbohydrates)
                 console.log((sum / carbsGoal) * 100)
 
+            } if (sum>carbsGoal){
+                setAverageCarbsNum(100)
+            }else{
+                setAverageCarbsNum((sum / carbsGoal) * 100)
             }
-            setAverageCarbsNum((sum / carbsGoal) * 100)
         } catch (err) {
             console.log(err)
         }
@@ -124,8 +135,11 @@ function Today() {
                 console.log(mealItem[i].fat)
                 console.log((sum / fatGoal) * 100)
 
+            } if (sum>fatGoal){
+                setAverageFatNum(100)
+            }else{
+                setAverageFatNum((sum / fatGoal) * 100)
             }
-            setAverageFatNum((sum / fatGoal) * 100)
         } catch (err) {
             console.log(err)
         }
