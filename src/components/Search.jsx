@@ -238,9 +238,7 @@ const Search = (props) => {
 
     return (
         <div className="search-context">
-            <div id="progress" >
-                <div data-num={averageRating} className="progress-item">ds</div>
-            </div>
+
             <div className='search-context2'>
                 <div className="search-context-inner">
                     <p id="look-up-symbol">{<BsSearch />}</p>
@@ -272,7 +270,10 @@ const Search = (props) => {
                     } */}
                 </div>
             </div>
-            <button >Add</button>
+            <button ></button>
+            <div id="progress" >
+                <div data-num={averageRating} className="progress-item">ds</div>
+            </div>
             <div>
                 {meal ? (
                     <div>{meal.title}</div>

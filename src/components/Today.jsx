@@ -133,22 +133,30 @@ function Today() {
 
     return (
         <div>
-            <div className='container1'>
-                <h1>Calories</h1>
-                <div id="progress" >
-                    <div data-num={averageRating} className="progress-item">ds</div>
+            <div className='container'>
+                <div className='progress-box'>
+                    <h1>Calories</h1>
+                    <div id="progress" >
+                        <div data-num={averageRating} className="progress-item">ds</div>
+                    </div>
                 </div>
+                <div className='progress-box'>
                 <h1>Protein</h1>
                 <div id="progress" >
                     <div data-num={averageProteinNum} className="progress-item">ds</div>
                 </div>
+                </div>
+                <div className='progress-box'>
                 <h1>Carbs</h1>
                 <div id="progress" >
                     <div data-num={averageCarbsNum} className="progress-item">ds</div>
                 </div>
+                </div>
+                <div className='progress-box'>
                 <h1>Fat</h1>
                 <div id="progress" >
                     <div data-num={averageFatNum} className="progress-item">ds</div>
+                </div>
                 </div>
             </div>
         </div>
