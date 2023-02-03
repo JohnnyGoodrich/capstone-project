@@ -21,7 +21,7 @@ const Search = (props) => {
     const URL = "https://capstone-nutrition-app.herokuapp.com/food"
     const mealURL = `https://capstone-nutrition-app.herokuapp.com/meal/63d98149c8ac5f0cc6197613`
     const mealItemURL = `https://capstone-nutrition-app.herokuapp.com/meal/edit/${id}`
-    const URL2 = `http://localhost:4000/food/${id}`
+    const URL2 = `https://capstone-nutrition-app.herokuapp.com/food/${id}`
     const API = `https://api.edamam.com/api/nutrition-data?app_id=bb62f382&app_key=6504bb61e928acc7fad1e6d78d60ff28&nutrition-type=logging&ingr=chicken`
 
 
@@ -131,7 +131,7 @@ const Search = (props) => {
     // create handlesubmit 
     const getfood = async (e) => {
         try {
-            const response = await fetch(`http://localhost:4000/food/${e.target.value}`)
+            const response = await fetch(`https://capstone-nutrition-app.herokuapp.com/food/${e.target.value}`)
             const foundFood = await response.json()
             console.log(foundFood)
             setAddFood(foundFood)
@@ -149,7 +149,7 @@ const Search = (props) => {
         const currentState = addFood
         // need to await addfood before post? 
         try {
-            const foodResponse = await fetch(`http://localhost:4000/food/${e.target.value}`)
+            const foodResponse = await fetch(`https://capstone-nutrition-app.herokuapp.com/food/${e.target.value}`)
             const foundFood = await foodResponse.json()
             console.log(mealURL, foundFood)
             const requestOptions = {
@@ -187,7 +187,7 @@ const Search = (props) => {
             }
             setDeleteFood([mealItem])
 
-            const response = await fetch(`http://localhost:4000/meal/edit/${e.target.value}`, options)
+            const response = await fetch(`https://capstone-nutrition-app.herokuapp.com/meal/edit/${e.target.value}`, options)
             // const createdMealItem = await response.json()
             // setMealItem([mealItem])
             navigate(0)
