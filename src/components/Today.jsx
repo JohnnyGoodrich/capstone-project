@@ -9,7 +9,7 @@ function Today() {
     const [averageCarbsNum, setAverageCarbsNum] = useState(0)
     const [averageFatNum, setAverageFatNum] = useState(0)
     const [mealItem, setMealItem] = useState(null)
-    const mealURL = `http://localhost:4000/meal/63d98149c8ac5f0cc6197613`
+    const mealURL = `https://capstone-nutrition-app.herokuapp.com/meal/63d98149c8ac5f0cc6197613`
 
     const getMeal = async () => {
         try {

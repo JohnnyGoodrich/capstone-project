@@ -18,9 +18,9 @@ const Search = (props) => {
     const navigate = useNavigate()
     const { id } = params
 
-    const URL = "http://localhost:4000/food"
-    const mealURL = `http://localhost:4000/meal/63d98149c8ac5f0cc6197613`
-    const mealItemURL = `http://localhost:4000/meal/edit/${id}`
+    const URL = "https://capstone-nutrition-app.herokuapp.com/food"
+    const mealURL = `https://capstone-nutrition-app.herokuapp.com/meal/63d98149c8ac5f0cc6197613`
+    const mealItemURL = `https://capstone-nutrition-app.herokuapp.com/meal/edit/${id}`
     const URL2 = `http://localhost:4000/food/${id}`
     const API = `https://api.edamam.com/api/nutrition-data?app_id=bb62f382&app_key=6504bb61e928acc7fad1e6d78d60ff28&nutrition-type=logging&ingr=chicken`
 
@@ -312,7 +312,7 @@ const Search = (props) => {
                 ) : (<p> No meals to show </p>)}
             </div>
             <Link style={{ textDecoration: 'none' }} to={`/newfood`}>
-                <button>Add New Food</button>
+                <button>Add New Food or Edit Existing Food</button>
             </Link>
             <div className='all-foods2'>
                 {food ? (

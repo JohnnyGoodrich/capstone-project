@@ -2,7 +2,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
+    
+}
 #root{
 
 }
@@ -13,19 +14,19 @@ html{
     /* background-image: url("https://thumbs.dreamstime.com/z/superfoods-white-background-healthy-nutrition-border-design-superfoods-white-marble-background-healthy-nutrition-copy-158583988.jpg");
     background-image: url("https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
     /* background-size:100% 100vh; */
-    margin:0px;
+    /* margin:0px;
     background-repeat: no-repeat;
-    height:100%;
+    height:100%; */
 }
 body {
     background-image: url("https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-    background-size:100% 210vh;
+    background-size:100% 100%;
     margin:0px;
     background-repeat: no-repeat;
-    height:100vh;
+    background-attachment: fixed;
+    /* height:100vh; */
 }
 .app{
-    width: 100%;
 }
   
 

@@ -17,8 +17,8 @@ function AddFood() {
         image: "",
     })
 
-    const URL = "http://localhost:4000/food"
-    const URL2 = `http://localhost:4000/food/${id}`
+    const URL = "https://capstone-nutrition-app.herokuapp.com/food"
+    const URL2 = `https://capstone-nutrition-app.herokuapp.com/food/${id}`
 
     // get foods
     const getFoods = async () => {
