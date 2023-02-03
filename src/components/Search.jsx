@@ -141,15 +141,43 @@ const Search = (props) => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // setAddFood(e.target.value)
-        // update mealItem in state to include our new item
-        // setMealItem({...mealItem}+ e.target.value)
-        // getfood(e)
+ 
         console.log("hello" + addFood)
         const currentState = addFood
         // need to await addfood before post? 
         try {
             const foodResponse = await fetch(`https://capstone-nutrition-app.herokuapp.com/food/${e.target.value}`)
+            const foundFood = await foodResponse.json()
+            console.log(mealURL, foundFood)
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    // Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(foundFood)
+                // body: foundFood
+
+            }
+
+            const postResponse = await fetch(mealURL, requestOptions)
+            console.log(postResponse)
+            const createdMealItem = await postResponse.json()
+            setMealItem([...mealItem, createdMealItem])
+
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+    const handleSubmit2 = async (e) => {
+        e.preventDefault()
+ 
+        console.log("hello" + addFood)
+        const currentState = addFood
+        // need to await addfood before post? 
+        try {
+            const foodResponse = await fetch(`https://api.edamam.com/api/nutrition-data?app_id=bb62f382&app_key=6504bb61e928acc7fad1e6d78d60ff28&nutrition-type=logging&ingr=chicken`)
             const foundFood = await foodResponse.json()
             console.log(mealURL, foundFood)
             const requestOptions = {
@@ -241,6 +269,14 @@ const Search = (props) => {
         }
     }
 
+    const roundNumber = (num)=>{
+        let value = Math.floor(num)
+        // let value = Math.floor(num*10)/10
+        return value
+        console.log(value)
+    }
+   
+
     return (
         <div className="search-context">
 
@@ -277,6 +313,7 @@ const Search = (props) => {
             </div>
             <button ></button>
             <div id="progress" >
+                <div className='wheel-label'>Calories from this meal</div>
                 <div data-num={averageRating} className="progress-item">ds</div>
             </div>
             <div>
@@ -349,14 +386,14 @@ const Search = (props) => {
                                     <div className='foods2'>
                                         <div className='food-text'>
                                             <div className=''>Name: {foods.text}</div>
-                                            <div className=''>Calories: {foods.parsed[0].nutrients.ENERC_KCAL.quantity}</div>
-                                            <div className=''>Protein: {foods.parsed[0].nutrients.PROCNT.quantity}</div>
-                                            <div className=''>Carbs: {foods.parsed[0].nutrients.CHOCDF.quantity}</div>
-                                            <div className=''>Fat: {foods.parsed[0].nutrients.FAT.quantity}</div>
+                                            <div className=''>Calories: {roundNumber (foods.parsed[0].nutrients.ENERC_KCAL.quantity)}</div>
+                                            <div className=''>Protein: {roundNumber (foods.parsed[0].nutrients.PROCNT.quantity)}</div>
+                                            <div className=''>Carbs: {roundNumber (foods.parsed[0].nutrients.CHOCDF.quantity)}</div>
+                                            <div className=''>Fat: {roundNumber (foods.parsed[0].nutrients.FAT.quantity)}</div>
                                         </div>
                                         <div>
                                             <img className='' src={foods.image} height="100px" />
-                                            <button key={index} value={foods._id} onClick={handleSubmit}>Add</button>
+                                            <button key={index} value={foods._id} onClick={handleSubmit2}>Add</button>
 
                                         </div>
                                     </div>

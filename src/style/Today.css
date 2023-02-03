@@ -1,6 +1,6 @@
 #progress{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     padding-top: 20px;
     padding-bottom: 20px;
   }
