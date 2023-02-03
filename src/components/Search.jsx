@@ -340,7 +340,7 @@ const Search = (props) => {
                     })
                 ) : (<p> No foods to show </p>)}
             </div>
-            {/* <div className='all-foods2'>
+            <div className='all-foods2'>
                 {apiFoods ? (
                     apiFoods.map((foods, index) => {
                         return (
@@ -349,10 +349,10 @@ const Search = (props) => {
                                     <div className='foods2'>
                                         <div className='food-text'>
                                             <div className=''>Name: {foods.text}</div>
-                                            <div className=''>Calories: {foods.calories}</div>
-                                            <div className=''>Protein: {foods.protein}</div>
-                                            <div className=''>Carbs: {foods.quantity}</div>
-                                            <div className=''>Fat: {foods.fat}</div>
+                                            <div className=''>Calories: {foods.parsed[0].nutrients.ENERC_KCAL.quantity}</div>
+                                            <div className=''>Protein: {foods.parsed[0].nutrients.PROCNT.quantity}</div>
+                                            <div className=''>Carbs: {foods.parsed[0].nutrients.CHOCDF.quantity}</div>
+                                            <div className=''>Fat: {foods.parsed[0].nutrients.FAT.quantity}</div>
                                         </div>
                                         <div>
                                             <img className='' src={foods.image} height="100px" />
@@ -365,7 +365,7 @@ const Search = (props) => {
                         )
                     })
                 ) : (<p> No foods to show </p>)}
-            </div> */}
+            </div>
 
         </div>
     )
