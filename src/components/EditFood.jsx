@@ -39,11 +39,11 @@ function EditFood() {
                 //     Authorization: `Bearer ${token}`
                 // }
             }
-            // const response = await fetch(URL4, options)
-            // const deletedReview = await response.json()
+            const response = await fetch(URL, options)
+            const deletedFood = await response.json()
         } catch (err) {
             console.log(err)
-            // navigate(-1)
+            navigate(-1)
         }
     }
     const updateFood = async (e) => {
@@ -94,7 +94,7 @@ function EditFood() {
                         </div>
                     </div>
                 </section>
-                <button class='delete-button' value={foodDetails._id} >Delete Food</button>
+                <button class='delete-button' onClick={removeFood} >Delete Food</button>
             </div>
             <form className='container3' onSubmit={(e) => { updateFood(e) }} >
                 <div className='create-review'>
@@ -148,8 +148,8 @@ function EditFood() {
                     <input
                         type="text"
                         className="comment"
-                        value={editForm.fat}
-                        name="Image"
+                        value={editForm.image}
+                        name="image"
                         // placeholder="comment"
                         onChange={handleChange}
                     />
