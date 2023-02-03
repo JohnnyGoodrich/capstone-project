@@ -6,7 +6,7 @@ function EditFood() {
     const params = useParams()
     const { id } = params
     const navigate = useNavigate()
-    const URL = `http://localhost:4000/food/${id}`
+    const URL = `https://capstone-nutrition-app.herokuapp.com/food/${id}`
     const [foodDetails, setFoodDetails] = useState(null)
     const [editForm, setEditForm] = useState({
         name: "",
