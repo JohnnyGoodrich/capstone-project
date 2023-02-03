@@ -5,6 +5,7 @@ import '../style/EditFood.css'
 function EditFood() {
     const params = useParams()
     const { id } = params
+    const navigate = useNavigate()
     const URL = `http://localhost:4000/food/${id}`
     const [foodDetails, setFoodDetails] = useState(null)
     const [editForm, setEditForm] = useState({
@@ -18,7 +19,6 @@ function EditFood() {
 
     const getFoodDetails = async () => {
         try {
-
             const response = await fetch(URL)
             const foundFoodDetails = await response.json()
             setFoodDetails(foundFoodDetails)
@@ -46,7 +46,34 @@ function EditFood() {
             // navigate(-1)
         }
     }
+    const updateFood = async (e) => {
+        e.preventDefault()
+        const currentState = { ...foodDetails, ...editForm }
+        try {
+            const requestOptions = {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    // Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(currentState)
+            }
+            const response = await fetch(URL, requestOptions)
+            const updatedFood = await response.json()
+            setFoodDetails(updatedFood)
 
+            navigate(-1)
+
+        } catch (err) {
+            console.log(err)
+            navigate(URL)
+        }
+    }
+    const handleChange = (e) => {
+        const userInput = { ...editForm }
+        userInput[e.target.name] = e.target.value
+        setEditForm(userInput)
+    }
     const loaded = () => (
         <div>
             <div className='container3'>
@@ -69,62 +96,62 @@ function EditFood() {
                 </section>
                 <button class='delete-button' value={foodDetails._id} >Delete Food</button>
             </div>
-            <form className='container3'  >
+            <form className='container3' onSubmit={(e) => { updateFood(e) }} >
                 <div className='create-review'>
                     <h2 className='section-header'>Edit this food</h2>
                     <div className='text-box'>Name</div>
                     <input
-                        type="number"
+                        type="text"
                         value={editForm.name}
                         className="comment"
-                        name="rating"
+                        name="name"
                         // placeholder="rating"
-                        // onChange={handleChange}
+                        onChange={handleChange}
                     />
                     <div className='text-box'>Calories</div>
                     <input
                         type="text"
                         className="comment"
                         value={editForm.calories}
-                        name="comment"
+                        name="calories"
                         // placeholder="comment"
-                        // onChange={handleChange}
+                        onChange={handleChange}
                     />
                     <div className='text-box'>Protein</div>
                     <input
                         type="text"
                         className="comment"
                         value={editForm.protein}
-                        name="comment"
+                        name="protein"
                         // placeholder="comment"
-                        // onChange={handleChange}
+                        onChange={handleChange}
                     />
                     <div className='text-box'>Carbohydrates</div>
                     <input
                         type="text"
                         className="comment"
                         value={editForm.carbohydrates}
-                        name="comment"
+                        name="carbohydrates"
                         // placeholder="comment"
-                        // onChange={handleChange}
+                        onChange={handleChange}
                     />
                     <div className='text-box'>Fat</div>
                     <input
                         type="text"
                         className="comment"
                         value={editForm.fat}
-                        name="comment"
+                        name="fat"
                         // placeholder="comment"
-                        // onChange={handleChange}
+                        onChange={handleChange}
                     />
                     <div className='text-box'>Image</div>
                     <input
                         type="text"
                         className="comment"
                         value={editForm.fat}
-                        name="comment"
+                        name="Image"
                         // placeholder="comment"
-                        // onChange={handleChange}
+                        onChange={handleChange}
                     />
                     <div className='update-review-box'>
                     <input className='update-review' type="submit" value="Update Review" />
