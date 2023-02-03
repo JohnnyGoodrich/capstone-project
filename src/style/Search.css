@@ -156,13 +156,14 @@ input {
     display: flex;
     flex-direction: column;
     position: relative;
-    height: 100%;
-    width: 1000px;
+    height: 1000px;
+    width: 900px;
     background: white;
     margin: 400px auto 0;
     /* word-break: break-all; */
     border: 1px solid rgba(0, 0, 0, 0.274);
     border-bottom: none;
+    margin-bottom: 100px;
   }
 .container3 {
     border-radius: 20px;
@@ -172,7 +173,7 @@ input {
     height: 100%;
     width: 500px;
     background: white;
-    margin: 400px auto 0;
+    margin: 80px auto 0;
     /* word-break: break-all; */
     border: 1px solid rgba(0, 0, 0, 0.274);
     border-bottom: none;

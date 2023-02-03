@@ -74,13 +74,13 @@ function AddFood() {
         }
     }
     // end handle functions
-
+  
 
     const loaded = () => (
         <div className='container2'>
-            <form className='rating-form' onSubmit={handleSubmit}>
+            <form className='food-form' onSubmit={handleSubmit}>
+                <div className='create-food'>
                 <h2 className='section-header'>Create a New Food</h2>
-                <div className='create-review'>
                     <label className='comment-label' htmlFor='title'>
                         <div>Name</div>
                         <input

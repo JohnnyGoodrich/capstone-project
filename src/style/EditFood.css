@@ -1,0 +1,28 @@
+.rating{
+    width:100px;
+}
+.comment{
+    width:100px;
+    background-color: rgb(203, 205, 205);
+}
+.update-review{
+    width:475px;
+    border-radius: none;
+    background-color: rgb(203, 205, 205);
+}
+.update-review-box{
+    padding-top: 10px;
+    /* border: 1px solid black; */
+}
+input{
+    /* border: 1px solid black; */
+}
+.create-review{
+    padding: 10px;
+}
+button{
+    /* border: 1px solid black; */
+}
+.delete-button{
+    background-color: rgb(203, 205, 205);
+}
