@@ -4,6 +4,12 @@ import Search from "./Search";
 import myFunction from "./SearchBar";
 import { Link } from 'react-router-dom'
 import Today from "./Today";
+import Popup from 'reactjs-popup';
+import React from "react";
+import Modal from "./Popup";
+import Progress from "./Progress";
+
+
 
 function Main() {
     let pageNumber = 1
@@ -12,9 +18,9 @@ function Main() {
     const toggleTab = (index) => {
         setToggleState(index);
     };
-    const setClick = (page)=>{
+    const setClick = (page) => {
         toggleTab(page)
-        pageNumber=page
+        pageNumber = page
         console.log(page)
     }
     console.log(pageNumber)
@@ -43,25 +49,20 @@ function Main() {
 
             <div className="content-tabs">
                 <div className={toggleState === 1 ? "content  active-content" : "content"}>
-                    <h2>Content 1</h2>
-                    <hr />
-                    {/* <p>
-                    Content
-                    </p> */}
+                <Progress/>
+
                 </div>
 
                 <div className={toggleState === 2 ? "content  active-content" : "content"}>
-                    <Today/>
-                    {/* <p>
-                      Content
-                    </p> */}
+                
+                    <Today />
+
                 </div>
 
                 <div className={toggleState === 3 ? "content  active-content" : "content"}>
-                    <Search/>
-                    {/* <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"></input>
-                    <ul id="myUL">
-                    </ul> */}
+                    
+                    <Search />
+                   
                 </div>
             </div>
         </div>

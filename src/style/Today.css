@@ -32,5 +32,9 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
 
+#calorie-input{
+    width:200px;
+    background-color: rgb(203, 205, 205);
 }

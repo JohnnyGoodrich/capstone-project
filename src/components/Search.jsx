@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { BsSearch } from "react-icons/bs"
 import '../style/Search.css'
+import Progress from './Progress'
 
 const Search = (props) => {
     const [searchValue, setSearchValue] = useState('')
@@ -141,7 +142,7 @@ const Search = (props) => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
- 
+
         console.log("hello" + addFood)
         const currentState = addFood
         // need to await addfood before post? 
@@ -172,7 +173,7 @@ const Search = (props) => {
     }
     const handleSubmit2 = async (e) => {
         e.preventDefault()
- 
+
         console.log("hello" + addFood)
         const currentState = addFood
         // need to await addfood before post? 
@@ -251,16 +252,17 @@ const Search = (props) => {
         let calorieGoal = 2000
         try {
             for (let i = 0; i < mealItem.length; i++) {
-                let num = sum / calorieGoal
+                let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
+                console.log(num)
                 array.push(mealItem[i].calories)
                 sum += array[i]
                 // console.log(mealItem[i].calories)
                 // console.log((sum / calorieGoal) * 100)
 
             }
-            if (sum > calorieGoal){
+            if (sum > calorieGoal) {
                 setAverageRating(100)
-            }else{
+            } else {
 
                 setAverageRating((sum / calorieGoal) * 100)
             }
@@ -269,29 +271,28 @@ const Search = (props) => {
         }
     }
 
-    const roundNumber = (num)=>{
+    const roundNumber = (num) => {
         let value = Math.floor(num)
         // let value = Math.floor(num*10)/10
         return value
         console.log(value)
     }
-   
+
 
     return (
         <div className="search-context">
-
             <div className='search-context2'>
                 <div className="search-context-inner">
                     <p id="look-up-symbol">{<BsSearch />}</p>
-                    <input type="text" value={searchValue} onChange={onChange} id="search" autoComplete="off" placeholder="Search foods..." />
+                    <input type="text" onChange={onChange} id="search" autoComplete="off" placeholder="Search foods..." />
                     <Link style={{ textDecoration: 'none' }} to={`/details/${searchValue}`}>
                         <button onClick={() => <Link to={`/details/${searchValue}`}></Link>} id="search-submit">Search</button>
                     </Link>
                 </div>
-                <div className="drop-down-list">
-                    {/* {Object.values(apiFoods).filter((food) => {
-                        const searchItem = searchValue.toLowerCase()
-                        const foodTitle = food.title.toLowerCase()
+                {/* <div className="drop-down-list">
+                    {Object.values(food).filter((food) => {
+                        const searchItem = searchValue
+                        const foodTitle = food.name
                         return (searchItem && foodTitle.startsWith(searchItem) && foodTitle !== searchItem)
                     })
                         .slice(0, 8)
@@ -301,20 +302,31 @@ const Search = (props) => {
                                     <div className='drop-down-info'>
                                         <img id="search-image" style={{ borderRadius: '10px' }} src={food.image} alt="" />
                                         <div>
-                                            <div id="search-title" style={{ textDecoration: 'none' }}>{food.title}</div>
-                                            <p className='movie-info-search'><span className='age-rating'>{food.agerating}</span>&nbsp; {food.year}, {food.hlength}h{food.mlength}m</p>
-                                        </div>
+                                            <div id="search-title" style={{ textDecoration: 'none' }}>{food.name}</div>
+                                            <button key={idx} value={food._id} onClick={handleSubmit}>Add</button> */}
+                {/* <p className='movie-info-search'><span className='age-rating'>{food.calories}</span>&nbsp; {food.protein}, {food.carbohydrates}h{food.fat}m</p> */}
+                {/* </div>
                                     </div>
                                 </Link>
                             </div>
                         ))
-                    } */}
-                </div>
+                    }
+                </div> */}
             </div>
             <button ></button>
             <div id="progress" >
                 <div className='wheel-label'>Calories from this meal</div>
                 <div data-num={averageRating} className="progress-item">ds</div>
+            </div>
+            <div>
+                <div class="cntainer-fluid">
+                    <div class="progress">
+                        <label class="progress-label col-xs-3" > Total memory:</label>
+                        <div class="progress-bar progress-bar-striped active col-xs-9" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style={{ width: { averageRating } }}>
+                            40% Complete (success)
+                        </div>
+                    </div>
+                </div>
             </div>
             <div>
                 {meal ? (
@@ -386,10 +398,10 @@ const Search = (props) => {
                                     <div className='foods2'>
                                         <div className='food-text'>
                                             <div className=''>Name: {foods.text}</div>
-                                            <div className=''>Calories: {roundNumber (foods.parsed[0].nutrients.ENERC_KCAL.quantity)}</div>
-                                            <div className=''>Protein: {roundNumber (foods.parsed[0].nutrients.PROCNT.quantity)}</div>
-                                            <div className=''>Carbs: {roundNumber (foods.parsed[0].nutrients.CHOCDF.quantity)}</div>
-                                            <div className=''>Fat: {roundNumber (foods.parsed[0].nutrients.FAT.quantity)}</div>
+                                            <div className=''>Calories: {roundNumber(foods.parsed[0].nutrients.ENERC_KCAL.quantity)}</div>
+                                            <div className=''>Protein: {roundNumber(foods.parsed[0].nutrients.PROCNT.quantity)}</div>
+                                            <div className=''>Carbs: {roundNumber(foods.parsed[0].nutrients.CHOCDF.quantity)}</div>
+                                            <div className=''>Fat: {roundNumber(foods.parsed[0].nutrients.FAT.quantity)}</div>
                                         </div>
                                         <div>
                                             <img className='' src={foods.image} height="100px" />
