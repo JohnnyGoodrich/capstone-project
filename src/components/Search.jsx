@@ -14,6 +14,7 @@ const Search = (props) => {
     const [apiFoods, setApiFoods] = useState(null)
     const [mealItem, setMealItem] = useState(null)
     const [breakfastItem, setBreakfastItem] = useState(null)
+    const [lunchItem, setLunchItem] = useState(null)
     const [meal, setMeal] = useState(null)
     const [addFood, setAddFood] = useState(null)
     const [deleteFood, setDeleteFood] = useState(null)
@@ -118,6 +119,24 @@ const Search = (props) => {
 
     useEffect(() => {
         getBreakfastItems()
+        console.log(meal)
+    }, [])
+    const getLunchItem = async () => {
+        try {
+            const response = await fetch(mealURL4)
+            const foundFood = await response.json()
+            // setMeal(foundFood)
+            // console.log(foundFood.title.title)
+            setLunchItem(foundFood.foods)
+            console.log(foundFood.foods)
+            console.log(editForm.title)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        getLunchItem()
         console.log(meal)
     }, [])
 
@@ -249,6 +268,37 @@ const Search = (props) => {
         }
 
     }
+    const submitLunch = async (e) => {
+        e.preventDefault()
+
+        console.log("hello" + addFood)
+        const currentState = addFood
+        // need to await addfood before post? 
+        try {
+            const foodResponse = await fetch(`https://capstone-nutrition-app.herokuapp.com/food/${e.target.value}`)
+            const foundFood = await foodResponse.json()
+            console.log(mealURL, foundFood)
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    // Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(foundFood)
+                // body: foundFood
+
+            }
+
+            const postResponse = await fetch(mealURL4, requestOptions)
+            console.log(postResponse)
+            const createdMealItem = await postResponse.json()
+            setLunchItem([...lunchItem, createdMealItem])
+
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
     const handleSubmit2 = async (e) => {
         e.preventDefault()
 
@@ -314,6 +364,27 @@ const Search = (props) => {
                 }
             }
             setDeleteFood([breakfastItem])
+
+            const response = await fetch(`https://capstone-nutrition-app.herokuapp.com/meal/edit/${e.target.value}`, options)
+            // const createdMealItem = await response.json()
+            // setMealItem([mealItem])
+            navigate(0)
+        } catch (err) {
+            console.log(err)
+
+        }
+    }
+    const removeLunchItem = async (e) => {
+        // e.preventDefault()
+        const removedItem = e.target.value
+        try {
+            const options = {
+                method: "DELETE",
+                headers: {
+                    // Authorization: `Bearer ${token}`
+                }
+            }
+            setDeleteFood([lunchItem])
 
             const response = await fetch(`https://capstone-nutrition-app.herokuapp.com/meal/edit/${e.target.value}`, options)
             // const createdMealItem = await response.json()
@@ -536,6 +607,32 @@ const Search = (props) => {
                 </div>
                 <div>
                     {meal ? meal[2].title : <p>no meal</p>}
+                    <div className='all-foods2'>
+                        {lunchItem ? (
+                            lunchItem.map((mealItems, index) => {
+                                return (
+                                    <div key={mealItems._id} className='food-list'>
+                                        <div className='edit'>
+                                            <div className='foods2'>
+                                                <div className='food-text'>
+                                                    <div className=''>Name: {mealItems.name}</div>
+                                                    <div className=''>Calories: {mealItems.calories}</div>
+                                                    <div className=''>Protein: {mealItems.protein}</div>
+                                                    <div className=''>Carbs: {mealItems.carbohydrates}</div>
+                                                    <div className=''>Fat: {mealItems.fat}</div>
+
+                                                </div>
+                                                <div>
+                                                    <img className='' src={mealItems.image} height="100px" />
+                                                    <button key={index} value={mealItems._id} onClick={removeBreakfastItem}>Remove</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        ) : (<p> No Food to show </p>)}
+                    </div>
                 </div>
 
 
@@ -594,6 +691,7 @@ const Search = (props) => {
                                         <div className='item-buttons'>
                                             <button key={index} value={foods._id} onClick={handleSubmit}>Add to Meal1</button>
                                             <button key={index} value={foods._id} onClick={submitBreakfast}>Add to Breakfast</button>
+                                            <button key={index} value={foods._id} onClick={submitLunch}>Add to Lunch</button>
 
                                         </div>
                                     </div>
