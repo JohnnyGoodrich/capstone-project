@@ -499,16 +499,24 @@ const Search = (props) => {
                         .slice(0, 8)
                         .map((food, idx) => (
                             <div onClick={() => onSearch(food)} className="drop-down-row" key={idx}>
-                                <Link style={{ textDecoration: 'none' }} key={food._id} to={`/review/${food._id}`}>
+                                
                                     <div className='drop-down-info'>
                                         <img id="search-image" style={{ borderRadius: '10px' }} src={food.image} alt="" />
                                         <div>
                                             <div id="search-title" style={{ textDecoration: 'none' }}>{food.name}</div>
-                                            <button key={idx} value={food._id} onClick={handleSubmit}>Add</button>
-                                            <p className='movie-info-search'><span className='age-rating'>{food.calories}</span>&nbsp; {food.protein}, {food.carbohydrates}h{food.fat}m</p>
+                                            <div>
+                                            <button className="search-content-button" key={idx} value={food._id} onClick={handleSubmit}>meal1</button>
+                                            </div>
+                                            <div>
+                                            <button className="search-content-button" key={idx} value={food._id} onClick={submitBreakfast}>Breakfast</button>
+                                            </div>
+                                            <div>
+                                            <button className="search-content-button" key={idx} value={food._id} onClick={submitLunch}>Lunch</button>
+                                            </div>
+                                            <p className='movie-info-search'><span className='age-rating'>{food.calories + "cal"},</span>&nbsp; {food.protein + "g/protein"}, {food.carbohydrates + "g/carbs"}, &nbsp;{food.fat + "g/fat"}</p>
                                         </div>
                                     </div>
-                                </Link>
+                              
                             </div>
                         ))
                     :null}
