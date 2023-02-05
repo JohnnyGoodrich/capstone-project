@@ -103,7 +103,7 @@ function Main() {
                             <button type="button" onClick={logout} className='btn btn-outline-warning'>Logout</button>
                         </div>
                     </div> : <a id="login-box" href="/auth">LOGIN|SIGN-UP</a>}
-                    <LoginForm signIn={loginUser}/>
+                    {/* <LoginForm signIn={loginUser}/> */}
                     
                 </div>
 

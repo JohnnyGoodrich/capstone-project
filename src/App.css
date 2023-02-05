@@ -1,186 +1,223 @@
-*, ::before, ::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    
-}
-#root{
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 
 }
-.main{
-    
-}
-html{
-    /* background-image: url("https://thumbs.dreamstime.com/z/superfoods-white-background-healthy-nutrition-border-design-superfoods-white-marble-background-healthy-nutrition-copy-158583988.jpg");
+
+#root {}
+
+.main {}
+
+html {
+  /* background-image: url("https://thumbs.dreamstime.com/z/superfoods-white-background-healthy-nutrition-border-design-superfoods-white-marble-background-healthy-nutrition-copy-158583988.jpg");
     background-image: url("https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
-    /* background-size:100% 100vh; */
-    /* margin:0px;
+  /* background-size:100% 100vh; */
+  /* margin:0px;
     background-repeat: no-repeat;
     height:100%; */
 }
+
 body {
-    background-image: url("https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-    background-size:100% 100%;
-    margin:0px;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    /* height:100vh; */
+  background-image: url("https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: 100% 100%;
+  margin: 0px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* height:100vh; */
 }
-.app{
+
+.app {}
+
+
+
+.bloc-tabs {
+  display: flex;
 }
-  
 
-  
-  .bloc-tabs {
-    display: flex;
-  }
-  .tabs {
-    padding: 15px;
-    text-align: center;
-    width: 50%;
-    background: rgba(128, 128, 128, 0.075);
-    cursor: pointer;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.274);
-    box-sizing: content-box;
-    position: relative;
-    outline: none;
-  }
-  .tabs:not(:last-child){
-    border-right: 1px solid rgba(0, 0, 0, 0.274);
-  }
-  
-  .active-tabs  {
-    background: white;
-    border-bottom: 1px solid transparent;
-  }
-  
-  .active-tabs::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% + 2px);
-    height: 5px;
-    background: rgb(88, 147, 241);
-  }
-  
-  button {
-    border: none;
-    
-  }
-  .content-tabs {
-    flex-grow : 1;
-  }
-  .content {
-    background: white;
-    padding: 20px;
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-  .content h2 {
-    padding: 0px 0 5px 0px;
-  }
-  .content hr {
-    width: 100px;
-    height: 2px;
-    background: #222;
-    margin-bottom: 5px;
-  }
-  .content p {
-    width: 100%;
-    height: 100vh;
-  }
-  .active-content {
-    display: block;
-    height: fit-content;
-  }
-  .modal {
-    font-size: 12px;
-  }
-  .modal > .header {
-    width: 100%;
-    border-bottom: 1px solid gray;
-    font-size: 18px;
-    text-align: center;
-    padding: 5px;
-  }
-  .modal > .content {
-    width: 100%;
-    padding: 10px 5px;
-  }
-  .modal > .actions {
-    width: 100%;
-    padding: 10px 5px;
-    margin: auto;
-    text-align: center;
-  }
-  .modal > .close {
-    cursor: pointer;
-    position: absolute;
-    display: block;
-    padding: 2px 5px;
-    line-height: 20px;
-    right: -10px;
-    top: -10px;
-    font-size: 24px;
-    background: #ffffff;
-    border-radius: 18px;
-    border: 1px solid #cfcece;
+.tabs {
+  padding: 15px;
+  text-align: center;
+  width: 50%;
+  background: rgba(128, 128, 128, 0.075);
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.274);
+  box-sizing: content-box;
+  position: relative;
+  outline: none;
+}
+
+.tabs:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.274);
+}
+
+.active-tabs {
+  background: white;
+  border-bottom: 1px solid transparent;
+}
+
+.active-tabs::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 2px);
+  height: 5px;
+  background: rgb(88, 147, 241);
+}
+
+button {
+  border: none;
+
+}
+
+.content-tabs {
+  flex-grow: 1;
+}
+
+.content {
+  background: white;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.content h2 {
+  padding: 0px 0 5px 0px;
+}
+
+.content hr {
+  width: 100px;
+  height: 2px;
+  background: #222;
+  margin-bottom: 5px;
+}
+
+.content p {
+  width: 100%;
+  height: 100vh;
+}
+
+.active-content {
+  display: block;
+  height: fit-content;
+}
+
+.modal {
+  font-size: 12px;
+}
+
+.modal>.header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+
+.modal>.content {
+  width: 100%;
+  padding: 10px 5px;
+}
+
+.modal>.actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+
+.modal>.close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+
+.popup-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: 50%;
+  padding: 5px;
+}
+
+.popup-arrow {
+  color: rgb(255, 255, 255);
+}
+
+[role='tooltip'].popup-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+[data-popup='tooltip'].popup-overlay {
+  background: transparent;
+}
+
+.popup-content {
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+html[data-theme='dark'] .popup-content {
+  background-color: rgb(41, 45, 62);
+  color: #fff;
+  border: 1px solid #9a9595;
+}
+
+html[data-theme='light'] .popup-content {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #d7d7d7;
+}
+
+html[data-theme='dark'] .popup-arrow>svg {
+  color: rgb(41, 45, 62);
+  stroke-width: 2px;
+  stroke: #9a9595;
+  stroke-dasharray: 30px;
+  stroke-dashoffset: -54px;
+}
+
+html[data-theme='light'] .popup-arrow>svg {
+  color: #fff;
+  stroke-width: 2px;
+  stroke: #d7d7d7;
+  stroke-dasharray: 30px;
+  stroke-dashoffset: -54px;
+}
+
+@media screen and (max-width:660px) {
+  .foods2 {
+    width: 150px !important;
+    /* height:100%!important; */
+    justify-content: space-around;
   }
 
-  .popup-content {
-    margin: auto;
-    background: rgb(255, 255, 255);
-    width: 50%;
-    padding: 5px;
+  .all-foods2 {
+    /* grid-gap:2rem!important ; */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))!important;
   }
-  .popup-arrow {
-    color: rgb(255, 255, 255);
+
+  img {
+    /* display: none; */
+    height: 75px;
+    width: 50px;
   }
-  [role='tooltip'].popup-content {
-    width: 200px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
-  }
-  
-  .popup-overlay {
-    background: rgba(0, 0, 0, 0.5);
-  }
-  [data-popup='tooltip'].popup-overlay {
-    background: transparent;
-  }
-  .popup-content {
-    border-radius: 5px;
-    padding: 0.5rem;
-  }
-  
-  html[data-theme='dark'] .popup-content {
-    background-color: rgb(41, 45, 62);
-    color: #fff;
-    border: 1px solid #9a9595;
-  }
-  
-  html[data-theme='light'] .popup-content {
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #d7d7d7;
-  }
-  
-  html[data-theme='dark'] .popup-arrow > svg {
-    color: rgb(41, 45, 62);
-    stroke-width: 2px;
-    stroke: #9a9595;
-    stroke-dasharray: 30px;
-    stroke-dashoffset: -54px;
-  }
-  
-  html[data-theme='light'] .popup-arrow > svg {
-    color: #fff;
-    stroke-width: 2px;
-    stroke: #d7d7d7;
-    stroke-dasharray: 30px;
-    stroke-dashoffset: -54px;
-  }
-  
+}

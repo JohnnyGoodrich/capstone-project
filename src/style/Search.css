@@ -53,9 +53,9 @@ input {
     position: relative;
     z-index: 100;
     height: 10px;
-    width: 50%;
+    width: 35%;
     max-width: 700px;
-    min-width: 400px;
+    min-width: 350px;
     margin: 0 auto;
 }
 
@@ -125,9 +125,9 @@ input {
 
 .foods2 {
     display: flex;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     /* flex-direction: column; */
-    justify-content: space-between;
+    justify-content: space-around;
     text-align: center;
     border-radius: 10px;
     width: 300px;
@@ -135,6 +135,28 @@ input {
     color: black;
     /* position: relative; */
     font-size: 10px;
+}
+.edit{
+    border: 1px solid black;
+    border-radius: 20px;
+}
+.remove-btn{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 0px 0px 20px 20px;
+}
+.add-btn{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    font-size: 12px;
+    /* padding-top: 10px!important; */
+}
+
+.all-foods-box{
+    border-radius: 1px solid grey;
 }
 
 .all-foods2 {
@@ -172,7 +194,7 @@ input {
     flex-direction: column;
     position: relative;
     height: 100%;
-    width: 1000px;
+    /* width: 1000px; */
     background: #f1f1f1;
     margin: 400px auto 0;
     /* word-break: break-all; */

@@ -486,9 +486,9 @@ const Search = (props) => {
                 <div className="search-context-inner">
                     {/* <p id="look-up-symbol">{<BsSearch />}</p> */}
                     <input type="text" onChange={onChange} id="search" autoComplete="off" placeholder="Search foods..." />
-                    <Link style={{ textDecoration: 'none' }} to={`/details/${searchValue}`}>
+                    {/* <Link style={{ textDecoration: 'none' }} to={`/details/${searchValue}`}>
                         <button onClick={() => <Link to={`/details/${searchValue}`}></Link>} id="search-submit">Search</button>
-                    </Link>
+                    </Link> */}
                 </div>
                 <div className="drop-down-list">
                     {food ? Object.values(food).filter((food) => {
@@ -499,27 +499,27 @@ const Search = (props) => {
                         .slice(0, 8)
                         .map((food, idx) => (
                             <div onClick={() => onSearch(food)} className="drop-down-row" key={idx}>
-                                
-                                    <div className='drop-down-info'>
-                                        <img id="search-image" style={{ borderRadius: '10px' }} src={food.image} alt="" />
+
+                                <div className='drop-down-info'>
+                                    <img id="search-image" style={{ borderRadius: '10px' }} src={food.image} alt="" />
+                                    <div>
+                                        <div id="search-title" style={{ textDecoration: 'none' }}>{food.name}</div>
                                         <div>
-                                            <div id="search-title" style={{ textDecoration: 'none' }}>{food.name}</div>
-                                            <div>
                                             <button className="search-content-button" key={idx} value={food._id} onClick={handleSubmit}>meal1</button>
-                                            </div>
-                                            <div>
-                                            <button className="search-content-button" key={idx} value={food._id} onClick={submitBreakfast}>Breakfast</button>
-                                            </div>
-                                            <div>
-                                            <button className="search-content-button" key={idx} value={food._id} onClick={submitLunch}>Lunch</button>
-                                            </div>
-                                            <p className='movie-info-search'><span className='age-rating'>{food.calories + "cal"},</span>&nbsp; {food.protein + "g/protein"}, {food.carbohydrates + "g/carbs"}, &nbsp;{food.fat + "g/fat"}</p>
                                         </div>
+                                        <div>
+                                            <button className="search-content-button" key={idx} value={food._id} onClick={submitBreakfast}>Breakfast</button>
+                                        </div>
+                                        <div>
+                                            <button className="search-content-button" key={idx} value={food._id} onClick={submitLunch}>Lunch</button>
+                                        </div>
+                                        <p className='movie-info-search'><span className='age-rating'>{food.calories + "cal"},</span>&nbsp; {food.protein + "g/protein"}, {food.carbohydrates + "g/carbs"}, &nbsp;{food.fat + "g/fat"}</p>
                                     </div>
-                              
+                                </div>
+
                             </div>
                         ))
-                    :null}
+                        : null}
                 </div>
             </div>
             <button ></button>
@@ -535,7 +535,7 @@ const Search = (props) => {
             </div> */}
             <div>
 
-                <Popup trigger={<button className="button"> Create New Meal </button>} modal contentStyle={{ padding: '50px', border: 'none' }}>
+                {/* <Popup trigger={<button className="button"> Create New Meal </button>} modal contentStyle={{ padding: '50px', border: 'none' }}>
                     <div className='popup-form-data'>
                         <form className='popup-form-data' onSubmit={handleSubmit3}>
                             <label for="fname">Meal Name: </label>
@@ -549,39 +549,41 @@ const Search = (props) => {
                             <button type='submit'>Set</button>
                         </form>
                     </div>
-                </Popup>
-
+                </Popup> */}
+                <div className='all-foods2'></div>
                 <div>
                     {meal ? meal[0].title : <p>no meal</p>}
                     {/* <div id="progress" >
                         <div className='wheel-label'>Calories from this meal</div>
                         <div data-num={averageRating} className="progress-item">ds</div>
                     </div> */}
-                    <div className='all-foods2'>
-                        {mealItem ? (
-                            mealItem.map((mealItems, index) => {
-                                return (
-                                    <div key={mealItems._id} className='food-list'>
-                                        <div className='edit'>
-                                            <div className='foods2'>
-                                                <div className='food-text'>
-                                                    <div className=''>Name: {mealItems.name}</div>
-                                                    <div className=''>Calories: {mealItems.calories}</div>
-                                                    <div className=''>Protein: {mealItems.protein}</div>
-                                                    <div className=''>Carbs: {mealItems.carbohydrates}</div>
-                                                    <div className=''>Fat: {mealItems.fat}</div>
+                    <div className='all-foods-box'>
+                        <div className='all-foods2'>
+                            {mealItem ? (
+                                mealItem.map((mealItems, index) => {
+                                    return (
+                                        <div key={mealItems._id} className='food-list'>
+                                            <div className='edit'>
+                                                <div className='foods2'>
+                                                    <div className='food-text'>
+                                                        <div className=''>Name: {mealItems.name}</div>
+                                                        <div className=''>Calories: {mealItems.calories}</div>
+                                                        <div className=''>Protein: {mealItems.protein}</div>
+                                                        <div className=''>Carbs: {mealItems.carbohydrates}</div>
+                                                        <div className=''>Fat: {mealItems.fat}</div>
 
+                                                    </div>
+                                                    <img className='card-image' src={mealItems.image} height="100px" />
+                                                    <div>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <img className='' src={mealItems.image} height="100px" />
-                                                    <button key={index} value={mealItems._id} onClick={removeItem}>Remove</button>
-                                                </div>
+                                                <button className='remove-btn' key={index} value={mealItems._id} onClick={removeItem}>Remove</button>
                                             </div>
                                         </div>
-                                    </div>
-                                )
-                            })
-                        ) : (<p> No Food to show </p>)}
+                                    )
+                                })
+                            ) : (<p> No Food to show </p>)}
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -603,9 +605,9 @@ const Search = (props) => {
                                                 </div>
                                                 <div>
                                                     <img className='' src={mealItems.image} height="100px" />
-                                                    <button key={index} value={mealItems._id} onClick={removeBreakfastItem}>Remove</button>
                                                 </div>
                                             </div>
+                                            <button className='remove-btn' key={index} value={mealItems._id} onClick={removeBreakfastItem}>Remove</button>
                                         </div>
                                     </div>
                                 )
@@ -632,9 +634,9 @@ const Search = (props) => {
                                                 </div>
                                                 <div>
                                                     <img className='' src={mealItems.image} height="100px" />
-                                                    <button key={index} value={mealItems._id} onClick={removeBreakfastItem}>Remove</button>
                                                 </div>
                                             </div>
+                                            <button className='remove-btn' key={index} value={mealItems._id} onClick={removeBreakfastItem}>Remove</button>
                                         </div>
                                     </div>
                                 )
@@ -697,11 +699,13 @@ const Search = (props) => {
                                             <img className='' src={foods.image} height="100px" />
                                         </div>
                                         <div className='item-buttons'>
-                                            <button key={index} value={foods._id} onClick={handleSubmit}>Add to Meal1</button>
-                                            <button key={index} value={foods._id} onClick={submitBreakfast}>Add to Breakfast</button>
-                                            <button key={index} value={foods._id} onClick={submitLunch}>Add to Lunch</button>
 
                                         </div>
+                                    </div>
+                                    <div className='add-btn'>
+                                            <button style={{padding:"10px", borderRadius:"0 0 0 20px", borderRight:"1px solid black", borderTop:"1px solid black"}} key={index} value={foods._id} onClick={handleSubmit}>Add to Meal1</button>
+                                            <button style={{padding:"10px", borderTop:"1px solid black"}} key={index} value={foods._id} onClick={submitBreakfast}>Add to Breakfast</button>
+                                            <button style={{padding:"10px", borderRadius:"0 0 20px 0", borderLeft:"1px solid black", borderTop:"1px solid black"}} key={index} value={foods._id} onClick={submitLunch}>Add to Lunch</button>
                                     </div>
                                 </div>
                             </div>
