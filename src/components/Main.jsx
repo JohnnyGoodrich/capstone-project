@@ -8,10 +8,19 @@ import Popup from 'reactjs-popup';
 import React from "react";
 import Modal from "./Popup";
 import Progress from "./Progress";
-
+import { getUserToken, setUserToken, clearUserToken, decodeToken } from "../utils/authToken"
+import { useParams, useNavigate } from 'react-router-dom'
 
 
 function Main() {
+    const token = getUserToken()
+    const navigate = useNavigate()
+
+    function logout() {
+        clearUserToken();
+        navigate('/')
+    }
+
     let pageNumber = 1
     const [toggleState, setToggleState] = useState(3);
 
@@ -50,7 +59,13 @@ function Main() {
             <div className="content-tabs">
                 <div className={toggleState === 1 ? "content  active-content" : "content"}>
                 <Progress/>
-
+                {token ?
+                    <div className='avatar-logout-button'>
+                        {/* <img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80" id="avatar-image" /> */}
+                        <div className='button-box'>
+                            <button type="button" onClick={logout} className='btn btn-outline-warning'>Logout</button>
+                        </div>
+                    </div> : <a id="login-box" href="/auth">LOGIN|SIGN-UP</a>}
                 </div>
 
                 <div className={toggleState === 2 ? "content  active-content" : "content"}>

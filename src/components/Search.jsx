@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { BsSearch } from "react-icons/bs"
 import '../style/Search.css'
 import Progress from './Progress'
+import { getUserToken, setUserToken, clearUserToken, decodeToken } from "../utils/authToken"
 
 const Search = (props) => {
     const [searchValue, setSearchValue] = useState('')
