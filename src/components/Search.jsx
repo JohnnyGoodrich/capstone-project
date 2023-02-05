@@ -354,6 +354,8 @@ const Search = (props) => {
                 let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
                 console.log(num)
                 array.push(mealItem[i].calories)
+                // array.push(breakfastItem[i].calories)
+                console.log(array)
                 sum += array[i]
                 // console.log(mealItem[i].calories)
                 // console.log((sum / calorieGoal) * 100)
@@ -417,8 +419,8 @@ const Search = (props) => {
                         <button onClick={() => <Link to={`/details/${searchValue}`}></Link>} id="search-submit">Search</button>
                     </Link>
                 </div>
-                {/* <div className="drop-down-list">
-                    {Object.values(food).filter((food) => {
+                <div className="drop-down-list">
+                    {food ? Object.values(food).filter((food) => {
                         const searchItem = searchValue
                         const foodTitle = food.name
                         return (searchItem && foodTitle.startsWith(searchItem) && foodTitle !== searchItem)
@@ -431,15 +433,15 @@ const Search = (props) => {
                                         <img id="search-image" style={{ borderRadius: '10px' }} src={food.image} alt="" />
                                         <div>
                                             <div id="search-title" style={{ textDecoration: 'none' }}>{food.name}</div>
-                                            <button key={idx} value={food._id} onClick={handleSubmit}>Add</button> */}
-                {/* <p className='movie-info-search'><span className='age-rating'>{food.calories}</span>&nbsp; {food.protein}, {food.carbohydrates}h{food.fat}m</p> */}
-                {/* </div>
+                                            <button key={idx} value={food._id} onClick={handleSubmit}>Add</button>
+                                            <p className='movie-info-search'><span className='age-rating'>{food.calories}</span>&nbsp; {food.protein}, {food.carbohydrates}h{food.fat}m</p>
+                                        </div>
                                     </div>
                                 </Link>
                             </div>
                         ))
-                    }
-                </div> */}
+                    :null}
+                </div>
             </div>
             <button ></button>
             {/* <div>
@@ -472,10 +474,10 @@ const Search = (props) => {
 
                 <div>
                     {meal ? meal[0].title : <p>no meal</p>}
-                    <div id="progress" >
+                    {/* <div id="progress" >
                         <div className='wheel-label'>Calories from this meal</div>
                         <div data-num={averageRating} className="progress-item">ds</div>
-                    </div>
+                    </div> */}
                     <div className='all-foods2'>
                         {mealItem ? (
                             mealItem.map((mealItems, index) => {
@@ -504,8 +506,8 @@ const Search = (props) => {
                     </div>
                 </div>
                 <div>
-                {meal ? meal[1].title : <p>no meal</p>}
-                <div className='all-foods2'>
+                    {meal ? meal[1].title : <p>no meal</p>}
+                    <div className='all-foods2'>
                         {breakfastItem ? (
                             breakfastItem.map((mealItems, index) => {
                                 return (
@@ -533,7 +535,7 @@ const Search = (props) => {
                     </div>
                 </div>
                 <div>
-                {meal ? meal[2].title : <p>no meal</p>}
+                    {meal ? meal[2].title : <p>no meal</p>}
                 </div>
 
 
@@ -589,11 +591,11 @@ const Search = (props) => {
                                         <div>
                                             <img className='' src={foods.image} height="100px" />
                                         </div>
-                                            <div className='item-buttons'>
+                                        <div className='item-buttons'>
                                             <button key={index} value={foods._id} onClick={handleSubmit}>Add to Meal1</button>
                                             <button key={index} value={foods._id} onClick={submitBreakfast}>Add to Breakfast</button>
-                                            
-                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -4,36 +4,41 @@ input {
     border-radius: 90px;
     background-color: whitesmoke;
     /* padding-bottom:50px ; */
-    text-decoration: none!important;
+    text-decoration: none !important;
 }
+
 *:focus {
     outline: 0 !important;
-    margin-right:none;
+    margin-right: none;
 }
-#search{
-    height:39px;
+
+#search {
+    height: 39px;
     margin-top: 1px;
     margin-bottom: 1px;
     margin-left: 20px;
 }
+
 #search-submit {
     display: grid;
     height: 40px;
     border-radius: 90px;
     border: 0px solid white;
-    font-size:20px;
+    font-size: 20px;
     padding-top: 5px;
     padding-left: 50px;
     padding-right: 50px;
-    text-decoration: none!important;
+    text-decoration: none !important;
     /* background-image: linear-gradient(75deg, yellow, red); */
     background-color: rgb(88, 147, 241);
 }
+
 #look-up-symbol {
     margin-left: 20px;
-    margin-top:  6px;
+    margin-top: 6px;
     margin-left: 10px;
 }
+
 .search-context {
     position: relative;
     z-index: 100;
@@ -43,49 +48,57 @@ input {
     min-width:400px; */
     margin: 0 auto;
 }
+
 .search-context2 {
     position: relative;
     z-index: 100;
     height: 10px;
     width: 50%;
     max-width: 700px;
-    min-width:400px;
+    min-width: 400px;
     margin: 0 auto;
 }
+
 .drop-down-list {
     top: 100%;
     width: 500px;
     color: black;
     background-color: #f5f5f5;
-    text-decoration: none!important;
+    text-decoration: none !important;
     padding-right: 0px;
-    
+
 }
-.drop-down-info{
+
+.drop-down-info {
     display: flex;
 }
+
 #search-image {
-    width: 12%;
-    height: auto;
+    /* width: 100px; */
+    height: 100px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.movie-info-search{
+
+.movie-info-search {
     justify-content: center;
     padding-top: 5px;
-    padding-left:10px;
+    padding-left: 10px;
     color: rgb(53, 53, 53);
 }
-.search-title-image{
+
+.search-title-image {
     display: flex;
 }
-#search-title{
-    text-decoration: none!important;
+
+#search-title {
+    text-decoration: none !important;
     font-size: 20px;
     color: black;
     margin-top: 10px;
     padding-left: 10px;
 }
+
 .search-context-inner {
     display: flex;
     border-radius: 50px;
@@ -94,23 +107,24 @@ input {
     box-sizing: border-box;
     margin-top: 8px;
     height: 42px;
-    text-decoration: none!important;
+    text-decoration: none !important;
 
 }
+
 .drop-down-row {
     cursor: pointer;
     text-align: start;
     margin: 0px 4px;
-    text-decoration: none!important;
+    text-decoration: none !important;
     background-color: white;
 }
 
-.rating-number{
+.rating-number {
     font-size: 10px;
 }
 
-.foods2{
-    display:flex;
+.foods2 {
+    display: flex;
     border: 1px solid black;
     /* flex-direction: column; */
     justify-content: space-between;
@@ -118,11 +132,12 @@ input {
     border-radius: 10px;
     width: 300px;
     height: 120px;
-    color:black;
+    color: black;
     /* position: relative; */
     font-size: 10px;
 }
-.all-foods2{
+
+.all-foods2 {
     border-bottom: 1px solid grey;
     justify-self: start;
     display: grid;
@@ -134,8 +149,9 @@ input {
     padding-bottom: 4rem;
     grid-auto-rows: auto;
     color: rgb(85, 84, 84);
-  }
-.available-foods-header{
+}
+
+.available-foods-header {
     display: flex;
     border-bottom: 1px solid grey;
     justify-content: center;
@@ -144,11 +160,13 @@ input {
     padding-top: 2rem;
     grid-auto-rows: auto;
     color: rgb(85, 84, 84);
-  }
-.food-text{
+}
+
+.food-text {
     padding-left: 10px;
     padding-top: 10px;
 }
+
 .container1 {
     display: flex;
     flex-direction: column;
@@ -160,7 +178,8 @@ input {
     /* word-break: break-all; */
     border: 1px solid rgba(0, 0, 0, 0.274);
     border-bottom: none;
-  }
+}
+
 .container2 {
     border-radius: 20px;
     display: flex;
@@ -174,7 +193,8 @@ input {
     border: 1px solid rgba(0, 0, 0, 0.274);
     border-bottom: none;
     margin-bottom: 100px;
-  }
+}
+
 .container3 {
     border-radius: 20px;
     display: flex;
@@ -187,24 +207,26 @@ input {
     /* word-break: break-all; */
     border: 1px solid rgba(0, 0, 0, 0.274);
     border-bottom: none;
-  }
-  h4{
+}
+
+h4 {
     padding-top: 15px;
     padding-bottom: 15px;
-  }
+}
 
-  .wheel-label{
+.wheel-label {
     display: flex;
     align-items: center;
     padding-right: 100px;
-  }
+}
 
-  .foods-header{
+.foods-header {
     display: flex;
     justify-content: space-between;
-  }
-  .item-buttons{
+}
+
+.item-buttons {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-  }
+}
