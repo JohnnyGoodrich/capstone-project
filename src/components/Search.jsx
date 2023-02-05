@@ -13,7 +13,7 @@ const Search = (props) => {
     const [food, setFood] = useState(null)
     const [apiFoods, setApiFoods] = useState(null)
     const [mealItem, setMealItem] = useState(null)
-    const [breafastItem, setBreakfastItem] = useState(null)
+    const [breakfastItem, setBreakfastItem] = useState(null)
     const [meal, setMeal] = useState(null)
     const [addFood, setAddFood] = useState(null)
     const [deleteFood, setDeleteFood] = useState(null)
@@ -65,8 +65,6 @@ const Search = (props) => {
         getAPI()
 
     }, [])
-
-
 
     const getMeal = async () => {
         try {
@@ -220,6 +218,37 @@ const Search = (props) => {
         }
 
     }
+    const submitBreakfast = async (e) => {
+        e.preventDefault()
+
+        console.log("hello" + addFood)
+        const currentState = addFood
+        // need to await addfood before post? 
+        try {
+            const foodResponse = await fetch(`https://capstone-nutrition-app.herokuapp.com/food/${e.target.value}`)
+            const foundFood = await foodResponse.json()
+            console.log(mealURL, foundFood)
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    // Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(foundFood)
+                // body: foundFood
+
+            }
+
+            const postResponse = await fetch(mealURL3, requestOptions)
+            console.log(postResponse)
+            const createdMealItem = await postResponse.json()
+            setBreakfastItem([...breakfastItem, createdMealItem])
+
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
     const handleSubmit2 = async (e) => {
         e.preventDefault()
 
@@ -260,10 +289,31 @@ const Search = (props) => {
             const options = {
                 method: "DELETE",
                 headers: {
-                    Authorization: `Bearer ${token}`
+                    // Authorization: `Bearer ${token}`
                 }
             }
             setDeleteFood([mealItem])
+
+            const response = await fetch(`https://capstone-nutrition-app.herokuapp.com/meal/edit/${e.target.value}`, options)
+            // const createdMealItem = await response.json()
+            // setMealItem([mealItem])
+            navigate(0)
+        } catch (err) {
+            console.log(err)
+
+        }
+    }
+    const removeBreakfastItem = async (e) => {
+        // e.preventDefault()
+        const removedItem = e.target.value
+        try {
+            const options = {
+                method: "DELETE",
+                headers: {
+                    // Authorization: `Bearer ${token}`
+                }
+            }
+            setDeleteFood([breakfastItem])
 
             const response = await fetch(`https://capstone-nutrition-app.herokuapp.com/meal/edit/${e.target.value}`, options)
             // const createdMealItem = await response.json()
@@ -340,7 +390,7 @@ const Search = (props) => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`
+                    // Authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify(currentState)
 
@@ -361,7 +411,7 @@ const Search = (props) => {
         <div className="search-context">
             <div className='search-context2'>
                 <div className="search-context-inner">
-                    <p id="look-up-symbol">{<BsSearch />}</p>
+                    {/* <p id="look-up-symbol">{<BsSearch />}</p> */}
                     <input type="text" onChange={onChange} id="search" autoComplete="off" placeholder="Search foods..." />
                     <Link style={{ textDecoration: 'none' }} to={`/details/${searchValue}`}>
                         <button onClick={() => <Link to={`/details/${searchValue}`}></Link>} id="search-submit">Search</button>
@@ -392,18 +442,14 @@ const Search = (props) => {
                 </div> */}
             </div>
             <button ></button>
-            <div id="progress" >
-                <div className='wheel-label'>Calories from this meal</div>
-                <div data-num={averageRating} className="progress-item">ds</div>
-            </div>
             {/* <div>
                 <div class="cntainer-fluid">
-                    <div class="progress">
-                        <label class="progress-label col-xs-3" > Total memory:</label>
-                        <div class="progress-bar progress-bar-striped active col-xs-9" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style={{ width: { averageRating } }}>
-                            40% Complete (success)
-                        </div>
-                    </div>
+                <div class="progress">
+                <label class="progress-label col-xs-3" > Total memory:</label>
+                <div class="progress-bar progress-bar-striped active col-xs-9" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style={{ width: { averageRating } }}>
+                40% Complete (success)
+                </div>
+                </div>
                 </div>
             </div> */}
             <div>
@@ -423,41 +469,73 @@ const Search = (props) => {
                         </form>
                     </div>
                 </Popup>
-                {meal ? (
-                    meal.map((mealInfo, index) => {
-                        return (
-                            <div>
-                                {mealInfo.title}
-                                <div className='all-foods2'>
-                                {mealItem ? (
-                                    mealItem.map((mealItems, index) => {
-                                        return (
-                                            <div key={mealItems._id} className='food-list'>
-                                                <div className='edit'>
-                                                    <div className='foods2'>
-                                                        <div className='food-text'>
-                                                            <div className=''>Name: {mealItems.name}</div>
-                                                            <div className=''>Calories: {mealItems.calories}</div>
-                                                            <div className=''>Protein: {mealItems.protein}</div>
-                                                            <div className=''>Carbs: {mealItems.carbohydrates}</div>
-                                                            <div className=''>Fat: {mealItems.fat}</div>
 
-                                                        </div>
-                                                        <div>
-                                                            <img className='' src={mealItems.image} height="100px" />
-                                                            <button key={index} value={mealItems._id} onClick={removeItem}>Remove</button>
-                                                        </div>
-                                                    </div>
+                <div>
+                    {meal ? meal[0].title : <p>no meal</p>}
+                    <div id="progress" >
+                        <div className='wheel-label'>Calories from this meal</div>
+                        <div data-num={averageRating} className="progress-item">ds</div>
+                    </div>
+                    <div className='all-foods2'>
+                        {mealItem ? (
+                            mealItem.map((mealItems, index) => {
+                                return (
+                                    <div key={mealItems._id} className='food-list'>
+                                        <div className='edit'>
+                                            <div className='foods2'>
+                                                <div className='food-text'>
+                                                    <div className=''>Name: {mealItems.name}</div>
+                                                    <div className=''>Calories: {mealItems.calories}</div>
+                                                    <div className=''>Protein: {mealItems.protein}</div>
+                                                    <div className=''>Carbs: {mealItems.carbohydrates}</div>
+                                                    <div className=''>Fat: {mealItems.fat}</div>
+
+                                                </div>
+                                                <div>
+                                                    <img className='' src={mealItems.image} height="100px" />
+                                                    <button key={index} value={mealItems._id} onClick={removeItem}>Remove</button>
                                                 </div>
                                             </div>
-                                        )
-                                    })
-                                ) : (<p> No Food to show </p>)}
-                            </div>
-                            </div>
-                        )
-                    })
-                ) : (<p>No meals to show</p>)}
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        ) : (<p> No Food to show </p>)}
+                    </div>
+                </div>
+                <div>
+                {meal ? meal[1].title : <p>no meal</p>}
+                <div className='all-foods2'>
+                        {breakfastItem ? (
+                            breakfastItem.map((mealItems, index) => {
+                                return (
+                                    <div key={mealItems._id} className='food-list'>
+                                        <div className='edit'>
+                                            <div className='foods2'>
+                                                <div className='food-text'>
+                                                    <div className=''>Name: {mealItems.name}</div>
+                                                    <div className=''>Calories: {mealItems.calories}</div>
+                                                    <div className=''>Protein: {mealItems.protein}</div>
+                                                    <div className=''>Carbs: {mealItems.carbohydrates}</div>
+                                                    <div className=''>Fat: {mealItems.fat}</div>
+
+                                                </div>
+                                                <div>
+                                                    <img className='' src={mealItems.image} height="100px" />
+                                                    <button key={index} value={mealItems._id} onClick={removeBreakfastItem}>Remove</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        ) : (<p> No Food to show </p>)}
+                    </div>
+                </div>
+                <div>
+                {meal ? meal[2].title : <p>no meal</p>}
+                </div>
+
 
             </div>
             <div className='available-foods-header'>
@@ -488,11 +566,11 @@ const Search = (props) => {
                 ) : (<p> No Food to show </p>)} */}
             </div>
             <div className='foods-header'>
-            <div>Click on foods below to add them to your meal</div>
-            {token ?
-            <Link style={{ textDecoration: 'none' }} to={`/newfood`}>
-                <button>Add New Food or Edit Existing Food</button>
-            </Link>:null}
+                <div>Click on foods below to add them to your meal</div>
+                {token ?
+                    <Link style={{ textDecoration: 'none' }} to={`/newfood`}>
+                        <button>Add New Food or Edit Existing Food</button>
+                    </Link> : null}
             </div>
             <div className='all-foods2'>
                 {food ? (
@@ -510,9 +588,12 @@ const Search = (props) => {
                                         </div>
                                         <div>
                                             <img className='' src={foods.image} height="100px" />
-                                            <button key={index} value={foods._id} onClick={handleSubmit}>Add</button>
-
                                         </div>
+                                            <div className='item-buttons'>
+                                            <button key={index} value={foods._id} onClick={handleSubmit}>Add to Meal1</button>
+                                            <button key={index} value={foods._id} onClick={submitBreakfast}>Add to Breakfast</button>
+                                            
+                                            </div>
                                     </div>
                                 </div>
                             </div>
