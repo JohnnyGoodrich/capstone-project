@@ -185,25 +185,6 @@ function Today() {
         userInput[e.target.name] = e.target.value
         setEditForm(userInput)
     }
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault()
-    //     document.getElementById("calorie-goal").innerText = `calorie goal: ${e.target[0].value}`
-    //     document.getElementById("protein-goal").innerText = `protein goal: ${e.target[0].value}`
-    //     document.getElementById("carbs-goal").innerText = `carbs goal: ${e.target[0].value}`
-    //     document.getElementById("fat-goal").innerText = `fat goal: ${e.target[0].value}`
-    //     console.log(e.target[0].value)
-    //     setCalorieGoalNum(e.target[0].value)
-    //     setEditForm({
-    //         calories: "",
-    //         protein: "",
-    //         carbs: "",
-    //         fat: "",
-
-
-    //     })
-    //     console.log(calorieGoalNum)
-
-    // }
 
     const handleSubmit = async (e) => {
         // e.preventDefault()
