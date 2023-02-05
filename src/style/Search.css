@@ -135,6 +135,16 @@ input {
     grid-auto-rows: auto;
     color: rgb(85, 84, 84);
   }
+.available-foods-header{
+    display: flex;
+    border-bottom: 1px solid grey;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    grid-auto-rows: auto;
+    color: rgb(85, 84, 84);
+  }
 .food-text{
     padding-left: 10px;
     padding-top: 10px;
@@ -187,4 +197,9 @@ input {
     display: flex;
     align-items: center;
     padding-right: 100px;
+  }
+
+  .foods-header{
+    display: flex;
+    justify-content: space-between;
   }

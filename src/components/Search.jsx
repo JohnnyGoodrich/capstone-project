@@ -5,6 +5,7 @@ import { BsSearch } from "react-icons/bs"
 import '../style/Search.css'
 import Progress from './Progress'
 import { getUserToken, setUserToken, clearUserToken, decodeToken } from "../utils/authToken"
+import Popup from 'reactjs-popup';
 
 const Search = (props) => {
     const [searchValue, setSearchValue] = useState('')
@@ -12,6 +13,7 @@ const Search = (props) => {
     const [food, setFood] = useState(null)
     const [apiFoods, setApiFoods] = useState(null)
     const [mealItem, setMealItem] = useState(null)
+    const [breafastItem, setBreakfastItem] = useState(null)
     const [meal, setMeal] = useState(null)
     const [addFood, setAddFood] = useState(null)
     const [deleteFood, setDeleteFood] = useState(null)
@@ -19,9 +21,17 @@ const Search = (props) => {
     const params = useParams()
     const navigate = useNavigate()
     const { id } = params
+    const token = getUserToken()
+    const [editForm, setEditForm] = useState({
+        title: "",
+    })
+    const allMeals = `http://localhost:4000/meal`
 
     const URL = "https://capstone-nutrition-app.herokuapp.com/food"
-    const mealURL = `https://capstone-nutrition-app.herokuapp.com/meal/63d98149c8ac5f0cc6197613`
+    const mealURL2 = `https://capstone-nutrition-app.herokuapp.com/meal/63d98149c8ac5f0cc6197613`
+    const mealURL3 = `https://capstone-nutrition-app.herokuapp.com/meal/63dfe532c1ea98433aebba9f`
+    const mealURL4 = `https://capstone-nutrition-app.herokuapp.com/meal/63dfee07c1ea98433aebbaab`
+    const mealURL = `http://localhost:4000/meal`
     const mealItemURL = `https://capstone-nutrition-app.herokuapp.com/meal/edit/${id}`
     const URL2 = `https://capstone-nutrition-app.herokuapp.com/food/${id}`
     const API = `https://api.edamam.com/api/nutrition-data?app_id=bb62f382&app_key=6504bb61e928acc7fad1e6d78d60ff28&nutrition-type=logging&ingr=chicken`
@@ -62,9 +72,11 @@ const Search = (props) => {
         try {
             const response = await fetch(mealURL)
             const foundFood = await response.json()
-            setMeal(foundFood.title)
+            setMeal(foundFood)
             // console.log(foundFood.title.title)
-            setMealItem(foundFood.foods)
+            // setMealItem(foundFood.foods)
+            console.log(foundFood.foods)
+            console.log(editForm.title)
         } catch (err) {
             console.log(err)
         }
@@ -72,7 +84,43 @@ const Search = (props) => {
 
     useEffect(() => {
         getMeal()
-        // console.log(mealItem)
+        console.log(meal)
+    }, [])
+    const getMeal1Item = async () => {
+        try {
+            const response = await fetch(mealURL2)
+            const foundFood = await response.json()
+            // setMeal(foundFood)
+            // console.log(foundFood.title.title)
+            setMealItem(foundFood.foods)
+            console.log(foundFood.foods)
+            console.log(editForm.title)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        getMeal1Item()
+        console.log(meal)
+    }, [])
+    const getBreakfastItems = async () => {
+        try {
+            const response = await fetch(mealURL3)
+            const foundFood = await response.json()
+            // setMeal(foundFood)
+            // console.log(foundFood.title.title)
+            setBreakfastItem(foundFood.foods)
+            console.log(foundFood.foods)
+            console.log(editForm.title)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        getBreakfastItems()
+        console.log(meal)
     }, [])
 
 
@@ -162,7 +210,7 @@ const Search = (props) => {
 
             }
 
-            const postResponse = await fetch(mealURL, requestOptions)
+            const postResponse = await fetch(mealURL2, requestOptions)
             console.log(postResponse)
             const createdMealItem = await postResponse.json()
             setMealItem([...mealItem, createdMealItem])
@@ -212,7 +260,7 @@ const Search = (props) => {
             const options = {
                 method: "DELETE",
                 headers: {
-                    // Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`
                 }
             }
             setDeleteFood([mealItem])
@@ -278,6 +326,35 @@ const Search = (props) => {
         return value
         console.log(value)
     }
+    const handleChange = (e) => {
+        const userInput = { ...editForm }
+        userInput[e.target.name] = e.target.value
+        setEditForm(userInput)
+    }
+    const handleSubmit3 = async (e) => {
+        e.preventDefault()
+        const currentState = { ...editForm }
+
+        try {
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(currentState)
+
+            }
+            const response = await fetch(mealURL, requestOptions)
+            const createdMeal = await response.json()
+            setMeal([...meal, createdMeal])
+            setEditForm({
+                title: "",
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
 
     return (
@@ -319,7 +396,7 @@ const Search = (props) => {
                 <div className='wheel-label'>Calories from this meal</div>
                 <div data-num={averageRating} className="progress-item">ds</div>
             </div>
-            <div>
+            {/* <div>
                 <div class="cntainer-fluid">
                     <div class="progress">
                         <label class="progress-label col-xs-3" > Total memory:</label>
@@ -328,15 +405,64 @@ const Search = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div>
+
+                <Popup trigger={<button className="button"> Create New Meal </button>} modal contentStyle={{ padding: '50px', border: 'none' }}>
+                    <div className='popup-form-data'>
+                        <form className='popup-form-data' onSubmit={handleSubmit3}>
+                            <label for="fname">Meal Name: </label>
+                            <input
+                                id="calorie-input"
+                                type="string"
+                                value={editForm.title}
+                                name="title"
+                                onChange={handleChange}
+                            />
+                            <button type='submit'>Set</button>
+                        </form>
+                    </div>
+                </Popup>
                 {meal ? (
-                    <div>{meal.title}</div>
+                    meal.map((mealInfo, index) => {
+                        return (
+                            <div>
+                                {mealInfo.title}
+                                <div className='all-foods2'>
+                                {mealItem ? (
+                                    mealItem.map((mealItems, index) => {
+                                        return (
+                                            <div key={mealItems._id} className='food-list'>
+                                                <div className='edit'>
+                                                    <div className='foods2'>
+                                                        <div className='food-text'>
+                                                            <div className=''>Name: {mealItems.name}</div>
+                                                            <div className=''>Calories: {mealItems.calories}</div>
+                                                            <div className=''>Protein: {mealItems.protein}</div>
+                                                            <div className=''>Carbs: {mealItems.carbohydrates}</div>
+                                                            <div className=''>Fat: {mealItems.fat}</div>
+
+                                                        </div>
+                                                        <div>
+                                                            <img className='' src={mealItems.image} height="100px" />
+                                                            <button key={index} value={mealItems._id} onClick={removeItem}>Remove</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                ) : (<p> No Food to show </p>)}
+                            </div>
+                            </div>
+                        )
+                    })
                 ) : (<p>No meals to show</p>)}
 
             </div>
-            <div className='all-foods2'>
-                {mealItem ? (
+            <div className='available-foods-header'>
+                <h1>Available Foods to Add</h1>
+                {/* {mealItem ? (
                     mealItem.map((mealItems, index) => {
                         return (
                             <div key={mealItems._id} className='food-list'>
@@ -359,11 +485,15 @@ const Search = (props) => {
                             </div>
                         )
                     })
-                ) : (<p> No meals to show </p>)}
+                ) : (<p> No Food to show </p>)} */}
             </div>
+            <div className='foods-header'>
+            <div>Click on foods below to add them to your meal</div>
+            {token ?
             <Link style={{ textDecoration: 'none' }} to={`/newfood`}>
                 <button>Add New Food or Edit Existing Food</button>
-            </Link>
+            </Link>:null}
+            </div>
             <div className='all-foods2'>
                 {food ? (
                     food.map((foods, index) => {
@@ -390,7 +520,7 @@ const Search = (props) => {
                     })
                 ) : (<p> No foods to show </p>)}
             </div>
-            <div className='all-foods2'>
+            {/* <div className='all-foods2'>
                 {apiFoods ? (
                     apiFoods.map((foods, index) => {
                         return (
@@ -415,7 +545,7 @@ const Search = (props) => {
                         )
                     })
                 ) : (<p> No foods to show </p>)}
-            </div>
+            </div> */}
 
         </div>
     )

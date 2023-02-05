@@ -35,6 +35,7 @@ function AddFood() {
 
     useEffect(() => {
         getFoods()
+        console.log(editForm)
     }, [])
 
     // handlechange and handlesubmit

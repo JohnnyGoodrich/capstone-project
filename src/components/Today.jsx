@@ -2,6 +2,9 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import '../style/Today.css'
 import Popup from 'reactjs-popup';
+import {getUserToken,setUserToken, clearUserToken, decodeToken} from "../utils/authToken"
+import { useContext } from "react"
+import { UserContext } from "../data"
 
 
 function Today() {
@@ -12,6 +15,7 @@ function Today() {
     const [mealItem, setMealItem] = useState(null)
     const [calorieGoalNum, setCalorieGoalNum] = useState(0)
     const [goals, setGoals] = useState()
+    const token = getUserToken()
 
     const [editForm, setEditForm] = useState({
         calories: "",
@@ -194,7 +198,7 @@ function Today() {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
-                    // Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify(currentState)
             }
