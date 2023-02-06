@@ -283,26 +283,26 @@ function Today() {
 
                 <div className='progress-box'>
                     <div>
-                            <h3 id='calorie-goal'>Current Calorie goal: {goals[0].calories}</h3>
+                            <h3 id='goal-text'>Current Calorie goal: {goals[0].calories}</h3>
                     </div>
                     <div id="progress" >
                         <div data-num={averageRating} className="progress-item">ds</div>
                     </div>
                 </div>
                 <div className='progress-box'>
-                    <h3 id='protein-goal'>Current Protein goal: {goals[0].protein}g</h3>
+                    <h3 id='goal-text'>Current Protein goal: {goals[0].protein}g</h3>
                     <div id="progress" >
                         <div data-num={averageProteinNum} className="progress-item">ds</div>
                     </div>
                 </div>
                 <div className='progress-box'>
-                    <h3 id='carbs-goal'>Current Carb goal: {goals[0].carbohydrates}g</h3>
+                    <h3 id='goal-text'>Current Carb goal: {goals[0].carbohydrates}g</h3>
                     <div id="progress" >
                         <div data-num={averageCarbsNum} className="progress-item">ds</div>
                     </div>
                 </div>
                 <div className='progress-box'>
-                    <h3 id='fat-goal'>Current Fat goal: {goals[0].fat}g</h3>
+                    <h3 id='goal-text'>Current Fat goal: {goals[0].fat}g</h3>
                     <div id="progress" >
                         <div data-num={averageFatNum} className="progress-item">ds</div>
                     </div>
