@@ -435,14 +435,18 @@ const Search = (props) => {
 
             }
             if (sum > calorieGoal) {
-                setAverageRating(100)
+                setAverageRating(0)
             } else {
 
-                setAverageRating((sum / calorieGoal) * 100)
+                setAverageRating(sum)
+                console.log(sum)
             }
         } catch (err) {
             console.log(err)
         }
+    }
+    async function mealCalories() {
+
     }
 
     const roundNumber = (num) => {
@@ -507,13 +511,13 @@ const Search = (props) => {
                                     <div>
                                         <div id="search-title" style={{ textDecoration: 'none' }}>{food.name}</div>
                                         <div>
-                                            <button className="search-content-button" key={idx} value={food._id} onClick={handleSubmit}>meal1</button>
+                                            <button className="search-content-button" key={idx} value={food._id} onClick={handleSubmit}>Breakfast</button>
                                         </div>
                                         <div>
-                                            <button className="search-content-button" key={idx} value={food._id} onClick={submitBreakfast}>Breakfast</button>
+                                            <button className="search-content-button" key={idx} value={food._id} onClick={submitBreakfast}>Lunch</button>
                                         </div>
                                         <div>
-                                            <button className="search-content-button" key={idx} value={food._id} onClick={submitLunch}>Lunch</button>
+                                            <button className="search-content-button" key={idx} value={food._id} onClick={submitLunch}>Dinner</button>
                                         </div>
                                         <p className='movie-info-search'><span className='age-rating'>{food.calories + "cal"},</span>&nbsp; {food.protein + "g/protein"}, {food.carbohydrates + "g/carbs"}, &nbsp;{food.fat + "g/fat"}</p>
                                     </div>
@@ -554,11 +558,13 @@ const Search = (props) => {
                 </Popup> */}
                 <div className='all-foods2'></div>
                 <div>
-                    {meal ? meal[2].title : <p>no meal</p>}
-                    {/* <div id="progress" >
-                        <div className='wheel-label'>Calories from this meal</div>
-                        <div data-num={averageRating} className="progress-item">ds</div>
-                    </div> */}
+                    <div className='meal-title'>
+                        {meal ? meal[2].title : <p>no meal</p>}
+                    </div>
+                    <div className=''>Calories from this meal: <span className='averageRating'>{averageRating}</span></div>
+                    <div id="progress" >
+                        {/* <div data-num={averageRating} className="progress-item">ds</div> */}
+                    </div>
                     <div className='all-foods-box'>
                         <div className='all-foods2'>
                             {mealItem ? (
@@ -589,7 +595,10 @@ const Search = (props) => {
                     </div>
                 </div>
                 <div>
-                    {meal ? meal[0].title : <p>no meal</p>}
+                    <div className='meal-title'>
+                        {meal ? meal[0].title : <p>no meal</p>}
+                    </div>
+                    <div className=''>Calories from this meal:</div>
                     <div className='all-foods2'>
                         {breakfastItem ? (
                             breakfastItem.map((mealItems, index) => {
@@ -618,7 +627,10 @@ const Search = (props) => {
                     </div>
                 </div>
                 <div>
-                    {meal ? meal[1].title : <p>no meal</p>}
+                    <div className='meal-title'>
+                        {meal ? meal[1].title : <p>no meal</p>}
+                    </div>
+                    <div className=''>Calories from this meal:</div>
                     <div className='all-foods2'>
                         {lunchItem ? (
                             lunchItem.map((mealItems, index) => {
@@ -705,9 +717,9 @@ const Search = (props) => {
                                         </div>
                                     </div>
                                     <div className='add-btn'>
-                                            <button style={{padding:"10px", borderRadius:"0 0 0 20px", borderRight:"1px solid black", borderTop:"1px solid black"}} key={index} value={foods._id} onClick={handleSubmit}>Add to Breakfast</button>
-                                            <button style={{padding:"10px", borderTop:"1px solid black"}} key={index} value={foods._id} onClick={submitBreakfast}>Add to Lunch</button>
-                                            <button style={{padding:"10px", borderRadius:"0 0 20px 0", borderLeft:"1px solid black", borderTop:"1px solid black"}} key={index} value={foods._id} onClick={submitLunch}>Add to Dinner</button>
+                                        <button style={{ padding: "10px", borderRadius: "0 0 0 20px", borderRight: "1px solid black", borderTop: "1px solid black" }} key={index} value={foods._id} onClick={handleSubmit}>Add to Breakfast</button>
+                                        <button style={{ padding: "10px", borderTop: "1px solid black" }} key={index} value={foods._id} onClick={submitBreakfast}>Add to Lunch</button>
+                                        <button style={{ padding: "10px", borderRadius: "0 0 20px 0", borderLeft: "1px solid black", borderTop: "1px solid black" }} key={index} value={foods._id} onClick={submitLunch}>Add to Dinner</button>
                                     </div>
                                 </div>
                             </div>
