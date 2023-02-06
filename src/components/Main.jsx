@@ -26,7 +26,7 @@ function Main() {
     }
 
     let pageNumber = 1
-    const [toggleState, setToggleState] = useState(3);
+    const [toggleState, setToggleState] = useState(2);
 
     const toggleTab = (index) => {
         setToggleState(index);
@@ -98,7 +98,7 @@ function Main() {
                 {/* <Progress/> */}
                 {token ?
                     <div className='avatar-logout-button'>
-                        {/* <img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80" id="avatar-image" /> */}
+                        <img src="https://img.freepik.com/premium-vector/cute-avocado-chef-cartoon_138676-2984.jpg?w=2000" id="avatar-image" />
                         <div className='button-box'>
                             <button type="button" onClick={logout} className='btn btn-outline-warning'>Logout</button>
                         </div>

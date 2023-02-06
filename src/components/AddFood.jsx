@@ -75,13 +75,13 @@ function AddFood() {
         }
     }
     // end handle functions
-  
+
 
     const loaded = () => (
         <div className='container2'>
             <form className='food-form' onSubmit={handleSubmit}>
                 <div className='create-food'>
-                <h2 className='section-header'>Create a New Food</h2>
+                    <h2 className='section-header'>Create a New Food</h2>
                     <label className='comment-label' htmlFor='title'>
                         <div>Name</div>
                         <input
@@ -173,31 +173,35 @@ function AddFood() {
                     </div>
                 </div>
             </form>
-            <div className='all-foods'>
-                {food ? (
-                    food.map((foods, index) => {
-                        return (
-                            <div key={foods._id} className='food-list'>
-                                <div className='edit'>
-                                    <Link style={{ textDecoration: 'none' }} to={`/newfood/${foods._id}`} className='edit'>
-                                        <div className='foods'>
-                                            <p className='rating-number'>Name: {foods.name}</p>
-                                            <p className='rating-number'>Calories: {foods.calories}</p>
-                                            <p className='rating-number'>Protein: {foods.protein}</p>
-                                            <p className='rating-number'>Carbs: {foods.carbohydrates}</p>
-                                            <p className='rating-number'>Fat: {foods.fat}</p>
-                                            <img className='rating-number' src={foods.image} height="100px" />
-                                            {/* <p className='review-comment'>"{review.comment}"</p> */}
-                                        </div>
-                                    </Link>
-                                </div>
-                            </div>
-                        )
-                    })
-                ) : (<p> No foods to show </p>)}
-            </div>
-            <div>
+            <div className='all-foods-box'>
+                <div className='all-foods3'>
+                    {food ? (
+                        food.map((foods, index) => {
+                            return (
+                                <Link style={{ textDecoration: 'none' }} to={`/newfood/${foods._id}`} className=''>
+                                    <div key={foods._id} className='food-list2'>
+                                        <div className='edit'>
+                                            <div className='foods2'>
+                                                <div className='food-text'>
+                                                    <div className=''>Name: {foods.name}</div>
+                                                    <div className=''>Calories: {foods.calories}</div>
+                                                    <div className=''>Protein: {foods.protein}</div>
+                                                    <div className=''>Carbs: {foods.carbohydrates}</div>
+                                                    <div className=''>Fat: {foods.fat}</div>
+                                                </div>
 
+                                            <img className='' src={foods.image} height="100px" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Link>
+                            )
+                        })
+                    ) : (<p> No foods to show </p>)}
+                </div>
+                <div>
+
+                </div>
             </div>
         </div>
     )

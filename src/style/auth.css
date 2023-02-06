@@ -16,9 +16,11 @@
 }
 #username{
     max-width:70%;
+    padding-left: 20px;
 }
 #password{
     max-width:60%;
+    padding-left: 15px;
 }
 #login-button{
     width:90%
