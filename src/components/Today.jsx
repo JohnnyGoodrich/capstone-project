@@ -59,6 +59,11 @@ function Today() {
     }
     useEffect(() => {
         getGoals()
+        getMeal()
+        average()
+        averageProtein()
+        averageCarbs()
+        averageFat()
     }, [])
 
     useEffect(() => {
@@ -96,6 +101,7 @@ function Today() {
     });
     // setCaloriegoalNum(document.getElementById("calorie-input").value)
     async function average() {
+        
         let calorieGoal = goals[0].calories
         // calorieGoal = document.getElementById("calorie-input").value
         // console.log(calorieGoal)
