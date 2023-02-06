@@ -21,6 +21,7 @@ const Search = (props) => {
     const [averageRating, setAverageRating] = useState(0)
     const [meal2Calories, setMeal2Calories] = useState(0)
     const [meal3Calories, setMeal3Calories] = useState(0)
+    const [totalCaloriesConsumed, SetTotalCaloriesConsumed] = useState(0)
     const params = useParams()
     const navigate = useNavigate()
     const { id } = params
@@ -28,6 +29,7 @@ const Search = (props) => {
     const [editForm, setEditForm] = useState({
         title: "",
     })
+    const total = averageRating+meal3Calories+meal2Calories
     const allMeals = `https://capstone-nutrition-app.herokuapp.com/meal`
 
     const URL = "https://capstone-nutrition-app.herokuapp.com/food"
@@ -305,6 +307,9 @@ const Search = (props) => {
     useEffect(() => {
         meal3Sum()
     }, [lunchItem])
+    useEffect(() => {
+        totalCalories()
+    }, [totalCaloriesConsumed])
 
     let items = document.querySelectorAll('.progress-item');
     const counters = Array(items.length);
@@ -322,6 +327,17 @@ const Search = (props) => {
             }
         }, 15);
     });
+    async function totalCalories(){
+        const total = averageRating+meal3Calories+meal2Calories
+        let calorieSum = total
+        if (totalCaloriesConsumed != null){
+        calorieSum = (averageRating+meal3Calories+meal2Calories)
+        SetTotalCaloriesConsumed(calorieSum)
+        console.log(calorieSum)
+        }else{
+            return 0
+        }
+    }
 
     async function average() {
         const array = []
@@ -485,7 +501,10 @@ const Search = (props) => {
                         </form>
                     </div>
                 </Popup> */}
-                <div className='all-foods2'></div>
+                <div className='total'>
+                <div>Total calories consumed today: <span className='averageRating'>{total}</span></div>
+                </div>
+       
                 <div>
                     <div className='meal-title'>
                         {meal ? meal[2].title : <p>no meal</p>}

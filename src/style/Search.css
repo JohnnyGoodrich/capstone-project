@@ -275,3 +275,8 @@ h4 {
 .averageRating{
     color: darkcyan;
 }
+.total{
+    padding-top:50px;
+    font-size: large;
+    border-bottom: 1px solid black;
+}
