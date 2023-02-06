@@ -19,10 +19,10 @@ https://mactrack.netlify.app/
   * Database: MongoDB
   * Deployment: Heroku for backend, Netlify for frontend
 ## User Story
-    * As a user I want to be able to sign-up/sign-in so I can have a profile that saves my data
-    * As a user I want to be able to set daily calorie and nutritient goals for the day
-    * As a user I want to be able to log my food consumed throughout the day and save my meals
-    * As a user I want to be able to see my progress toward my calorie and nutrient goals displayed 
+  * As a user I want to be able to sign-up/sign-in so I can have a profile tha  saves my data
+  * As a user I want to be able to set daily calorie and nutritient goals for the day
+  * As a user I want to be able to log my food consumed throughout the day and save my meals
+  * As a user I want to be able to see my progress toward my calorie and nutrient goals displayed 
 
 ## Wireframes
 ![image](https://user-images.githubusercontent.com/116520614/215365287-912e6138-d87e-4457-b1aa-c93db428b3d2.png)
