@@ -309,7 +309,7 @@ const Search = (props) => {
     }, [lunchItem])
     useEffect(() => {
         totalCalories()
-    }, [totalCaloriesConsumed])
+    }, [])
 
     let items = document.querySelectorAll('.progress-item');
     const counters = Array(items.length);
