@@ -321,7 +321,7 @@ const Search = (props) => {
                 clearInterval(intervals[index]);
             } else {
                 counters[index] += 1;
-                number.style.background = "conic-gradient(aqua calc(" + counters[index] + "%), lightgrey 0deg)";
+                number.style.background = "conic-gradient(darkcyan calc(" + counters[index] + "%), lightgrey 0deg)";
                 number.setAttribute('data-value', counters[index] + "%");
                 number.innerHTML = counters[index] + "%";
             }

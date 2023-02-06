@@ -81,7 +81,7 @@ function Today() {
                 clearInterval(intervals[index]);
             } else {
                 counters[index] += 1;
-                number.style.background = "conic-gradient(aqua calc(" + counters[index] + "%), lightgrey 0deg)";
+                number.style.background = "conic-gradient(darkcyan calc(" + counters[index] + "%), lightgrey 0deg)";
                 number.setAttribute('data-value', counters[index] + "%");
                 number.innerHTML = counters[index] + "%";
             }
@@ -249,26 +249,26 @@ function Today() {
 
                 <div className='progress-box'>
                     <div>
-                            <h3 id='goal-text'>Current Calorie goal: {goals[0].calories}</h3>
+                            <h3 id='goal-text'>Current Calorie goal: <span className='averageRating'>{goals[0].calories}</span></h3>
                     </div>
                     <div id="progress" >
                         <div data-num={averageRating} className="progress-item">ds</div>
                     </div>
                 </div>
                 <div className='progress-box'>
-                    <h3 id='goal-text'>Current Protein goal: {goals[0].protein}g</h3>
+                    <h3 id='goal-text'>Current Protein goal: <span className='averageRating'>{goals[0].protein}</span>g</h3>
                     <div id="progress" >
                         <div data-num={averageProteinNum} className="progress-item">ds</div>
                     </div>
                 </div>
                 <div className='progress-box'>
-                    <h3 id='goal-text'>Current Carb goal: {goals[0].carbohydrates}g</h3>
+                    <h3 id='goal-text'>Current Carb goal: <span className='averageRating'>{goals[0].carbohydrates}</span>g</h3>
                     <div id="progress" >
                         <div data-num={averageCarbsNum} className="progress-item">ds</div>
                     </div>
                 </div>
                 <div className='progress-box'>
-                    <h3 id='goal-text'>Current Fat goal: {goals[0].fat}g</h3>
+                    <h3 id='goal-text'>Current Fat goal: <span className='averageRating'>{goals[0].fat}</span>g</h3>
                     <div id="progress" >
                         <div data-num={averageFatNum} className="progress-item">ds</div>
                     </div>
