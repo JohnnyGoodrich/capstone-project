@@ -48,7 +48,7 @@ function Main() {
                 },
             }
             const response = await fetch(
-                "http://localhost:4000/auth/login",
+                "https://capstone-nutrition-app.herokuapp.com/auth/login",
                 configs
             )
     

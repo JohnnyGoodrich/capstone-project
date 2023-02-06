@@ -26,13 +26,13 @@ const Search = (props) => {
     const [editForm, setEditForm] = useState({
         title: "",
     })
-    const allMeals = `http://localhost:4000/meal`
+    const allMeals = `https://capstone-nutrition-app.herokuapp.com/meal`
 
     const URL = "https://capstone-nutrition-app.herokuapp.com/food"
     const mealURL2 = `https://capstone-nutrition-app.herokuapp.com/meal/63d98149c8ac5f0cc6197613`
     const mealURL3 = `https://capstone-nutrition-app.herokuapp.com/meal/63dfe532c1ea98433aebba9f`
     const mealURL4 = `https://capstone-nutrition-app.herokuapp.com/meal/63dfee07c1ea98433aebbaab`
-    const mealURL = `http://localhost:4000/meal`
+    const mealURL = `https://capstone-nutrition-app.herokuapp.com/meal`
     const mealItemURL = `https://capstone-nutrition-app.herokuapp.com/meal/edit/${id}`
     const URL2 = `https://capstone-nutrition-app.herokuapp.com/food/${id}`
     const API = `https://api.edamam.com/api/nutrition-data?app_id=bb62f382&app_key=6504bb61e928acc7fad1e6d78d60ff28&nutrition-type=logging&ingr=chicken`

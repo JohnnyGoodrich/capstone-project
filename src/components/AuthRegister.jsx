@@ -16,7 +16,7 @@ function AuthRegister(props) {
                 },
             }
             const newUser = await fetch(
-                "http://localhost:4000/auth/register",
+                "https://capstone-nutrition-app.herokuapp.com/auth/register",
                 configs
             )
 

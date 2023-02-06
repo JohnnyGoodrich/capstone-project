@@ -18,7 +18,7 @@ function Auth(props){
                 },
             }
             const newUser = await fetch(
-                "http://localhost:4000/auth/register",
+                "https://capstone-nutrition-app.herokuapp.com/auth/register",
                 configs
             )
             const parsedUser = await newUser.json()
@@ -44,7 +44,7 @@ function Auth(props){
                 },
             }
             const response = await fetch(
-                "http://localhost:4000/auth/login",
+                "https://capstone-nutrition-app.herokuapp.com/auth/login",
                 configs
             )
     
