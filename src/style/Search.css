@@ -3,7 +3,6 @@ input {
     border: 0px solid white;
     border-radius: 90px;
     background-color: whitesmoke;
-    /* padding-bottom:50px ; */
     text-decoration: none !important;
 }
 
@@ -29,7 +28,6 @@ input {
     padding-left: 50px;
     padding-right: 50px;
     text-decoration: none !important;
-    /* background-image: linear-gradient(75deg, yellow, red); */
     background-color: rgb(88, 147, 241);
 }
 
@@ -42,10 +40,6 @@ input {
 .search-context {
     position: relative;
     z-index: 100;
-    /* height: 100%; */
-    /* width: 50%; */
-    /* max-width: 700px;
-    min-width:400px; */
     margin: 0 auto;
 }
 
@@ -63,18 +57,11 @@ input {
     top: 100%;
     width: 500px;
     color: black;
-    /* background-color: grey; */
     text-decoration: none !important;
     padding-right: 0px;
-    /* border-bottom: 1px solid black; */
-    /* border-left: 1px solid black;
-    border-right: 1px solid black; */
-    
-    
 }
 
 .drop-down-info {
-    /* height: 100%; */
     display: flex;
     align-items: center;
     background-color: rgb(220, 219, 219);
@@ -142,15 +129,12 @@ input {
 
 .foods2 {
     display: flex;
-    /* border: 1px solid black; */
-    /* flex-direction: column; */
     justify-content: space-around;
     text-align: center;
     border-radius: 10px;
     width: 300px;
     height: 120px;
     color: black;
-    /* position: relative; */
     font-size: 10px;
 }
 .edit{
@@ -170,7 +154,6 @@ input {
     width: 100%;
     justify-content: space-evenly;
     font-size: 12px;
-    /* padding-top: 10px!important; */
 }
 
 .all-foods-box{
@@ -184,8 +167,6 @@ input {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-auto-rows: minmax(10px, 50px);
     grid-gap: 1rem;
-    /* margin: 0 auto; */
-    /* max-width: 1200px; */
     padding-bottom: 4rem;
     grid-auto-rows: auto;
     color: rgb(85, 84, 84);
@@ -197,8 +178,6 @@ input {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-auto-rows: minmax(10px, 50px);
     grid-gap: 1rem;
-    /* margin: 0 auto; */
-    /* max-width: 1200px; */
     padding-bottom: 4rem;
     grid-auto-rows: auto;
     color: rgb(85, 84, 84);
@@ -228,8 +207,7 @@ input {
     height: 100%;
     width: 1000px;
     background: #f1f1f1;
-    margin: 400px auto 0;
-    /* word-break: break-all; */
+    margin: 200px auto 0;
     border: 1px solid rgba(0, 0, 0, 0.274);
     border-bottom: none;
 }
@@ -243,7 +221,6 @@ input {
     width: 900px;
     background: white;
     margin: 400px auto 0;
-    /* word-break: break-all; */
     border: 1px solid rgba(0, 0, 0, 0.274);
     border-bottom: none;
     margin-bottom: 100px;
@@ -258,7 +235,6 @@ input {
     width: 500px;
     background: white;
     margin: 80px auto 0;
-    /* word-break: break-all; */
     border: 1px solid rgba(0, 0, 0, 0.274);
     border-bottom: none;
 }
@@ -291,7 +267,6 @@ h4 {
     flex-direction: column;
     margin: 0;
     background-color: white;
-    
 }
 .meal-title{
     font-size: 22px;

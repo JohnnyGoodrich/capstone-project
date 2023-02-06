@@ -1,7 +1,6 @@
 import { useState } from "react";
 import '../App.css'
 import Search from "./Search";
-import myFunction from "./SearchBar";
 import { Link } from 'react-router-dom'
 import Today from "./Today";
 import Popup from 'reactjs-popup';
@@ -34,9 +33,7 @@ function Main() {
     const setClick = (page) => {
         toggleTab(page)
         pageNumber = page
-        console.log(page)
     }
-    console.log(pageNumber)
 
     const loginUser = async (data) => {
         try {
@@ -64,7 +61,6 @@ function Main() {
             }
         } catch (err) {
             console.log(err)
-            console.log(UserContext)
             clearUserToken();
             setAuth(false);
         }

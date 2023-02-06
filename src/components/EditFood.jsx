@@ -22,7 +22,6 @@ function EditFood() {
             const response = await fetch(URL)
             const foundFoodDetails = await response.json()
             setFoodDetails(foundFoodDetails)
-            console.log(foodDetails)
         } catch (err) {
             console.log(err)
         }

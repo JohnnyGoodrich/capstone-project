@@ -13,9 +13,9 @@ const LoginForm = ({ signIn }) => {
         const createdUserToken = await signIn(input)
 
         if (createdUserToken) {
-            navigate("/")//remember this. I think it should be /
+            navigate("/")
         } else {
-            navigate("/auth")//remember when something goes wrong
+            navigate("/auth")
         }
         setInput(initialState);
     };

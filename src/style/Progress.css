@@ -1,15 +1,12 @@
 .progress {
     height: 25px;
   }
-  
   .progress .sr-only {
     position: relative;
   }
-  
   .progress-bar {
     line-height: 25px;
   }
-  
   .progress-label {
     float: left;
     margin-right: em;
