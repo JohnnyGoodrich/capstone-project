@@ -333,7 +333,6 @@ const Search = (props) => {
         if (totalCaloriesConsumed != null){
         calorieSum = (averageRating+meal3Calories+meal2Calories)
         SetTotalCaloriesConsumed(calorieSum)
-        console.log(calorieSum)
         }else{
             return 0
         }
