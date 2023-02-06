@@ -19,6 +19,8 @@ const Search = (props) => {
     const [addFood, setAddFood] = useState(null)
     const [deleteFood, setDeleteFood] = useState(null)
     const [averageRating, setAverageRating] = useState(0)
+    const [meal2Calories, setMeal2Calories] = useState(0)
+    const [meal3Calories, setMeal3Calories] = useState(0)
     const params = useParams()
     const navigate = useNavigate()
     const { id } = params
@@ -401,6 +403,15 @@ const Search = (props) => {
         average()
     }, [mealItem])
 
+    useEffect(() => {
+        meal2Sum()
+        console.log(breakfastItem)
+    }, [breakfastItem])
+
+    useEffect(() => {
+        meal3Sum()
+    }, [lunchItem])
+
     let items = document.querySelectorAll('.progress-item');
     const counters = Array(items.length);
     const intervals = Array(items.length);
@@ -435,6 +446,58 @@ const Search = (props) => {
             } else {
 
                 setAverageRating(sum)
+                console.log(sum)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    async function mealCalories() {
+
+    }
+    async function meal2Sum() {
+        const array = []
+        let sum = 0
+        let calorieGoal = 2000
+        try {
+            for (let i = 0; i < breakfastItem.length; i++) {
+                let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
+                console.log(num)
+                array.push(breakfastItem[i].calories)
+                console.log(array)
+                sum += array[i]
+            }
+            if (sum > calorieGoal) {
+                setMeal2Calories(0)
+            } else {
+
+                setMeal2Calories(sum)
+                console.log(sum)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    async function mealCalories() {
+
+    }
+    async function meal3Sum() {
+        const array = []
+        let sum = 0
+        let calorieGoal = 2000
+        try {
+            for (let i = 0; i < lunchItem.length; i++) {
+                let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
+                console.log(num)
+                array.push(lunchItem[i].calories)
+                console.log(array)
+                sum += array[i]
+            }
+            if (sum > calorieGoal) {
+                setMeal3Calories(0)
+            } else {
+
+                setMeal3Calories(sum)
                 console.log(sum)
             }
         } catch (err) {
@@ -596,7 +659,7 @@ const Search = (props) => {
                     <div className='meal-title'>
                         {meal ? meal[0].title : <p>no meal</p>}
                     </div>
-                    <div className=''>Calories from this meal:</div>
+                    <div className=''>Calories from this meal: <span className='averageRating'>{meal2Calories}</span></div>
                     <div className='all-foods2'>
                         {breakfastItem ? (
                             breakfastItem.map((mealItems, index) => {
@@ -628,7 +691,7 @@ const Search = (props) => {
                     <div className='meal-title'>
                         {meal ? meal[1].title : <p>no meal</p>}
                     </div>
-                    <div className=''>Calories from this meal:</div>
+                    <div className=''>Calories from this meal: <span className='averageRating'>{meal3Calories}</span></div>
                     <div className='all-foods2'>
                         {lunchItem ? (
                             lunchItem.map((mealItems, index) => {
