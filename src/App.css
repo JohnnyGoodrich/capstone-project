@@ -203,6 +203,11 @@ html[data-theme='light'] .popup-arrow>svg {
   stroke-dashoffset: -54px;
 }
 
+@media screen and (max-width:1000px) {
+  .container{
+    /* width:fit-content */
+  }
+}
 @media screen and (max-width:660px) {
   .foods2 {
     width: 150px !important;
@@ -219,5 +224,18 @@ html[data-theme='light'] .popup-arrow>svg {
     /* display: none; */
     height: 75px;
     width: 50px;
+  }
+}
+
+@media screen and (max-width:410px){
+  .active-content{
+    padding-left: 2px;
+  }
+  .all-foods2 {
+    /* grid-gap:2rem!important ; */
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr))!important;
+  }
+  .edit{
+    /* width:170px ; */
   }
 }

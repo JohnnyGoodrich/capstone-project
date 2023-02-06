@@ -139,6 +139,7 @@ input {
 .edit{
     border: 1px solid black;
     border-radius: 20px;
+    /* width: 300px; */
 }
 .remove-btn{
     display: flex;
