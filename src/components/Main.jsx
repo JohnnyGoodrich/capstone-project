@@ -104,7 +104,7 @@ function Main() {
                         Developers Vision Statement
                     </div>
                     <div className="vision-statement">
-                    <div>"Our vision is to empower individuals to live their best lives through a holistic approach to health and wellness, promoting physical, mental, and emotional well-being."</div>
+                    <div>"Here at MackTrack, Our vision is to empower individuals to live their best lives through a holistic approach to health and wellness, promoting physical, mental, and emotional well-being."</div>
                     </div>
                     
                 </div>
