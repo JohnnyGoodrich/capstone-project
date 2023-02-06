@@ -427,12 +427,8 @@ const Search = (props) => {
                 let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
                 console.log(num)
                 array.push(mealItem[i].calories)
-                // array.push(breakfastItem[i].calories)
                 console.log(array)
                 sum += array[i]
-                // console.log(mealItem[i].calories)
-                // console.log((sum / calorieGoal) * 100)
-
             }
             if (sum > calorieGoal) {
                 setAverageRating(0)
@@ -510,14 +506,16 @@ const Search = (props) => {
                                     <img id="search-image" style={{ borderRadius: '10px' }} src={food.image} alt="" />
                                     <div>
                                         <div id="search-title" style={{ textDecoration: 'none' }}>{food.name}</div>
-                                        <div>
-                                            <button className="search-content-button" key={idx} value={food._id} onClick={handleSubmit}>Breakfast</button>
-                                        </div>
-                                        <div>
-                                            <button className="search-content-button" key={idx} value={food._id} onClick={submitBreakfast}>Lunch</button>
-                                        </div>
-                                        <div>
-                                            <button className="search-content-button" key={idx} value={food._id} onClick={submitLunch}>Dinner</button>
+                                        <div className='search-btn-box'>
+                                            <div>
+                                                <button className="search-content-button" key={idx} value={food._id} onClick={handleSubmit}>Breakfast</button>
+                                            </div>
+                                            <div>
+                                                <button className="search-content-button" key={idx} value={food._id} onClick={submitBreakfast}>Lunch</button>
+                                            </div>
+                                            <div>
+                                                <button className="search-content-button" key={idx} value={food._id} onClick={submitLunch}>Dinner</button>
+                                            </div>
                                         </div>
                                         <p className='movie-info-search'><span className='age-rating'>{food.calories + "cal"},</span>&nbsp; {food.protein + "g/protein"}, {food.carbohydrates + "g/carbs"}, &nbsp;{food.fat + "g/fat"}</p>
                                     </div>
