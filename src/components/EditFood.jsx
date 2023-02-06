@@ -154,7 +154,7 @@ function EditFood() {
                         onChange={handleChange}
                     />
                     <div className='update-review-box'>
-                    <input className='update-review' type="submit" value="Update Review" />
+                    <input className='update-review' type="submit" value="Update Food" />
                     </div>
 
                 </div>

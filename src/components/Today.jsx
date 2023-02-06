@@ -24,7 +24,7 @@ function Today() {
         fat: "",
     })
 
-    const mealURL = `https://capstone-nutrition-app.herokuapp.com/meal/63d98149c8ac5f0cc6197613`
+    const mealURL = `https://capstone-nutrition-app.herokuapp.com/meal/63e05088c1ea98433aebbf23`
     const goalURL = `http://localhost:4000/goals`
 
     // const changeCalorieNum = (e)=>{

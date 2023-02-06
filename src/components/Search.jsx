@@ -29,7 +29,9 @@ const Search = (props) => {
     const allMeals = `https://capstone-nutrition-app.herokuapp.com/meal`
 
     const URL = "https://capstone-nutrition-app.herokuapp.com/food"
-    const mealURL2 = `https://capstone-nutrition-app.herokuapp.com/meal/63d98149c8ac5f0cc6197613`
+
+    const mealURL2 = `https://capstone-nutrition-app.herokuapp.com/meal/63e05088c1ea98433aebbf23`
+
     const mealURL3 = `https://capstone-nutrition-app.herokuapp.com/meal/63dfe532c1ea98433aebba9f`
     const mealURL4 = `https://capstone-nutrition-app.herokuapp.com/meal/63dfee07c1ea98433aebbaab`
     const mealURL = `https://capstone-nutrition-app.herokuapp.com/meal`
@@ -552,7 +554,7 @@ const Search = (props) => {
                 </Popup> */}
                 <div className='all-foods2'></div>
                 <div>
-                    {meal ? meal[0].title : <p>no meal</p>}
+                    {meal ? meal[2].title : <p>no meal</p>}
                     {/* <div id="progress" >
                         <div className='wheel-label'>Calories from this meal</div>
                         <div data-num={averageRating} className="progress-item">ds</div>
@@ -587,7 +589,7 @@ const Search = (props) => {
                     </div>
                 </div>
                 <div>
-                    {meal ? meal[1].title : <p>no meal</p>}
+                    {meal ? meal[0].title : <p>no meal</p>}
                     <div className='all-foods2'>
                         {breakfastItem ? (
                             breakfastItem.map((mealItems, index) => {
@@ -616,7 +618,7 @@ const Search = (props) => {
                     </div>
                 </div>
                 <div>
-                    {meal ? meal[2].title : <p>no meal</p>}
+                    {meal ? meal[1].title : <p>no meal</p>}
                     <div className='all-foods2'>
                         {lunchItem ? (
                             lunchItem.map((mealItems, index) => {
@@ -703,9 +705,9 @@ const Search = (props) => {
                                         </div>
                                     </div>
                                     <div className='add-btn'>
-                                            <button style={{padding:"10px", borderRadius:"0 0 0 20px", borderRight:"1px solid black", borderTop:"1px solid black"}} key={index} value={foods._id} onClick={handleSubmit}>Add to Meal1</button>
-                                            <button style={{padding:"10px", borderTop:"1px solid black"}} key={index} value={foods._id} onClick={submitBreakfast}>Add to Breakfast</button>
-                                            <button style={{padding:"10px", borderRadius:"0 0 20px 0", borderLeft:"1px solid black", borderTop:"1px solid black"}} key={index} value={foods._id} onClick={submitLunch}>Add to Lunch</button>
+                                            <button style={{padding:"10px", borderRadius:"0 0 0 20px", borderRight:"1px solid black", borderTop:"1px solid black"}} key={index} value={foods._id} onClick={handleSubmit}>Add to Breakfast</button>
+                                            <button style={{padding:"10px", borderTop:"1px solid black"}} key={index} value={foods._id} onClick={submitBreakfast}>Add to Lunch</button>
+                                            <button style={{padding:"10px", borderRadius:"0 0 20px 0", borderLeft:"1px solid black", borderTop:"1px solid black"}} key={index} value={foods._id} onClick={submitLunch}>Add to Dinner</button>
                                     </div>
                                 </div>
                             </div>
