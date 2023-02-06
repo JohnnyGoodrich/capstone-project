@@ -122,7 +122,6 @@ const Search = (props) => {
 
     useEffect(() => {
         getLunchItem()
-        console.log(meal)
     }, [])
 
 
@@ -197,7 +196,6 @@ const Search = (props) => {
         try {
             const foodResponse = await fetch(`https://capstone-nutrition-app.herokuapp.com/food/${e.target.value}`)
             const foundFood = await foodResponse.json()
-            console.log(mealURL, foundFood)
             const requestOptions = {
                 method: "POST",
                 headers: {
@@ -219,7 +217,6 @@ const Search = (props) => {
     const handleSubmit2 = async (e) => {
         e.preventDefault()
         const currentState = addFood
-        // need to await addfood before post? 
         try {
             const foodResponse = await fetch(`https://api.edamam.com/api/nutrition-data?app_id=bb62f382&app_key=6504bb61e928acc7fad1e6d78d60ff28&nutrition-type=logging&ingr=chicken`)
             const foundFood = await foodResponse.json()
@@ -424,9 +421,7 @@ const Search = (props) => {
             <div className='search-context2'>
                 <div className="search-context-inner">
                     <input type="text" onChange={onChange} id="search" autoComplete="off" placeholder="Search foods..." />
-                    {/* <Link style={{ textDecoration: 'none' }} to={`/details/${searchValue}`}>
-                        <button onClick={() => <Link to={`/details/${searchValue}`}></Link>} id="search-submit">Search</button>
-                    </Link> */}
+               
                 </div>
                 <div className="drop-down-list">
                     {food ? Object.values(food).filter((food) => {
@@ -463,6 +458,7 @@ const Search = (props) => {
                 </div>
             </div>
             <button ></button>
+            {/* function going to use for future implementation */}
             {/* <div>
                 <div class="cntainer-fluid">
                 <div class="progress">
@@ -474,7 +470,6 @@ const Search = (props) => {
                 </div>
             </div> */}
             <div>
-
                 {/* <Popup trigger={<button className="button"> Create New Meal </button>} modal contentStyle={{ padding: '50px', border: 'none' }}>
                     <div className='popup-form-data'>
                         <form className='popup-form-data' onSubmit={handleSubmit3}>
@@ -637,7 +632,8 @@ const Search = (props) => {
                     })
                 ) : (<p> No foods to show </p>)}
             </div>
-            {/* <div className='all-foods2'>
+            {/* Will probably using this in future
+            <div className='all-foods2'>
                 {apiFoods ? (
                     apiFoods.map((foods, index) => {
                         return (

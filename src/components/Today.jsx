@@ -27,18 +27,11 @@ function Today() {
     const mealURL = `https://capstone-nutrition-app.herokuapp.com/meal/63e05088c1ea98433aebbf23`
     const goalURL = `http://localhost:4000/goals`
 
-    // const changeCalorieNum = (e)=>{
-    //     setCalorieGoalNum(e)
-    //     console.log(calorieGoal)
-    // }
     const getMeal = async () => {
         try {
             const response = await fetch(mealURL)
             const foundFood = await response.json()
-            // setMeal(foundFood.title)
-            // console.log(foundFood.title.title)
             setMealItem(foundFood.foods)
-            console.log(foundFood.foods)
         } catch (err) {
             console.log(err)
         }
@@ -47,12 +40,8 @@ function Today() {
         try {
             const response = await fetch(goalURL)
             const foundGoals = await response.json()
-            // setMeal(foundFood.title)
-            // console.log(foundFood.title.title)
             setGoals(foundGoals)
-            console.log(foundGoals)
-            console.log(foundGoals[0].calories)
-            console.log(goals[0].calories)
+
         } catch (err) {
             console.log(err)
         }
@@ -68,7 +57,6 @@ function Today() {
 
     useEffect(() => {
         getMeal()
-        console.log(mealItem)
     }, [])
     useEffect(() => {
         average()
@@ -99,12 +87,9 @@ function Today() {
             }
         }, 10);
     });
-    // setCaloriegoalNum(document.getElementById("calorie-input").value)
     async function average() {
         
         let calorieGoal = goals[0].calories
-        // calorieGoal = document.getElementById("calorie-input").value
-        // console.log(calorieGoal)
         const array = []
         let sum = 0
         try {
@@ -112,10 +97,6 @@ function Today() {
                 let num = sum / calorieGoal
                 array.push(mealItem[i].calories)
                 sum += array[i]
-                // console.log(mealItem[i].calories)
-                // console.log((sum / calorieGoal) * 100)
-                console.log(calorieGoal)
-
             }
             if (sum > calorieGoal) {
                 setAverageRating(100)
@@ -136,8 +117,6 @@ function Today() {
                 let num = sum / proteinGoal
                 array.push(mealItem[i].protein)
                 sum += array[i]
-                // console.log(mealItem[i].protein)
-                // console.log((sum / proteinGoal) * 100)
 
             } if (sum > proteinGoal) {
                 setAverageProteinNum(100)
@@ -157,8 +136,6 @@ function Today() {
                 let num = sum / carbsGoal
                 array.push(mealItem[i].carbohydrates)
                 sum += array[i]
-                // console.log(mealItem[i].carbohydrates)
-                // console.log((sum / carbsGoal) * 100)
 
             } if (sum > carbsGoal) {
                 setAverageCarbsNum(100)
@@ -178,8 +155,6 @@ function Today() {
                 let num = sum / fatGoal
                 array.push(mealItem[i].fat)
                 sum += array[i]
-                // console.log(mealItem[i].fat)
-                // console.log((sum / fatGoal) * 100)
 
             } if (sum > fatGoal) {
                 setAverageFatNum(100)
@@ -212,11 +187,8 @@ function Today() {
             const updateGoal = await response.json()
             setGoals(updateGoal)
 
-            // navigate(-1)
-
         } catch (err) {
             console.log(err)
-            // navigate(URL)
         }
     }
 
@@ -236,7 +208,6 @@ function Today() {
                                 name="calories"
                                 onChange={handleChange}
                             />
-                            {/* <input class="comment" type="submit" value="Submit" ></input> */}
 
                             &nbsp;
 
@@ -248,8 +219,6 @@ function Today() {
                                 name="protein"
                                 onChange={handleChange}
                             />
-                            {/* <input class="comment" type="submit" value="Submit" ></input> */}
-
 
                             <div class='popup-form-data'>&nbsp;
 
@@ -261,8 +230,6 @@ function Today() {
                                     name="carbohydrates"
                                     onChange={handleChange}
                                 />
-                                {/* <input class="comment" type="submit" value="Submit" ></input> */}
-
 
                             </div>&nbsp;
 
@@ -274,7 +241,6 @@ function Today() {
                                 name="fat"
                                 onChange={handleChange}
                             />
-                            {/* <input class="comment" type="submit" value="Submit" ></input> */}
                             <button type='submit'>Set</button>
                         </form>
                     </div>
