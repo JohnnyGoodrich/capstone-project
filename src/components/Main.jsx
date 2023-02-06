@@ -95,15 +95,21 @@ function Main() {
 
             <div className="content-tabs">
                 <div className={toggleState === 1 ? "content  active-content" : "content"}>
-                {/* <Progress/> */}
+               
                 {token ?
                     <div className='avatar-logout-button'>
                         <img src="https://img.freepik.com/premium-vector/cute-avocado-chef-cartoon_138676-2984.jpg?w=2000" id="avatar-image" />
                         <div className='button-box'>
                             <button type="button" onClick={logout} className='btn btn-outline-warning'>Logout</button>
                         </div>
-                    </div> : <a id="login-box" href="/auth">LOGIN|SIGN-UP</a>}
+                    </div> : <a className='avatar-logout-button' href="/auth">LOGIN | SIGN-UP</a>}
                     {/* <LoginForm signIn={loginUser}/> */}
+                    <div className="vision-statement-header">
+                        Developers Vision Statement
+                    </div>
+                    <div className="vision-statement">
+                    <div>"Our vision is to empower individuals to live their best lives through a holistic approach to health and wellness, promoting physical, mental, and emotional well-being."</div>
+                    </div>
                     
                 </div>
 

@@ -1,6 +1,7 @@
-*{
+* {
   font-family: 'Itim', cursive;
 }
+
 *,
 ::before,
 ::after {
@@ -206,6 +207,7 @@ html[data-theme='light'] .popup-arrow>svg {
   stroke-dasharray: 30px;
   stroke-dashoffset: -54px;
 }
+
 #avatar-image {
   display: flex;
   padding-right: 50px;
@@ -215,39 +217,48 @@ html[data-theme='light'] .popup-arrow>svg {
   height: 100px;
   border-radius: 50%;
 }
-.avatar-logout-button{
+
+.avatar-logout-button {
   display: flex;
   align-items: center;
   background-color: rgb(250, 242, 220);
 }
-/* .btn-outline-warning {
-  --bs-btn-color: #92a8d1!important;
-  --bs-btn-border-color: #92a8d1!important;
-  --bs-btn-hover-color: #313130!important;
-  --bs-btn-hover-bg: #92a8d1!important;
-  --bs-btn-hover-border-color: #92a8d1!important;
-  --bs-btn-focus-shadow-rgb: 255,193,7;
-  --bs-btn-active-color: #313130!important;
-  --bs-btn-active-bg: #92a8d1!important;
-  --bs-btn-active-border-color: #92a8d1!important;
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #92a8d1!important;
-  --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #92a8d1!important;
-  --bs-gradient: none;
-} */
+
+.vision-statement-header {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.vision-statement {
+  font-size: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  color: darkgray;
+  padding-bottom: 300px;
+}
+.vision-statement:hover {
+  color: black;
+}
+
+
 
 @media screen and (max-width:950px) {
-  .container1{
-    width:100vw!important;
+  .container1 {
+    width: 100vw !important;
   }
-  .container2{
-    width:100vw!important;
+
+  .container2 {
+    width: 100vw !important;
   }
-  .food-list2{
-    padding:10px!important;
+
+  .food-list2 {
+    padding: 10px !important;
   }
 }
+
 @media screen and (max-width:660px) {
   .foods2 {
     width: 150px !important;
@@ -257,7 +268,7 @@ html[data-theme='light'] .popup-arrow>svg {
 
   .all-foods2 {
     /* grid-gap:2rem!important ; */
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))!important;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
   }
 
   img {
@@ -267,15 +278,17 @@ html[data-theme='light'] .popup-arrow>svg {
   }
 }
 
-@media screen and (max-width:410px){
-  .active-content{
+@media screen and (max-width:410px) {
+  .active-content {
     padding-left: 2px;
   }
+
   .all-foods2 {
     /* grid-gap:2rem!important ; */
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr))!important;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
   }
-  .edit{
+
+  .edit {
     /* width:170px ; */
   }
 }
