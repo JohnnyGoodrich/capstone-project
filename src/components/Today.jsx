@@ -7,6 +7,8 @@ import { useContext } from "react"
 import { UserContext } from "../data"
 
 
+
+
 function Today() {
     const [averageRating, setAverageRating] = useState(0)
     const [averageProteinNum, setAverageProteinNum] = useState(0)
@@ -16,6 +18,7 @@ function Today() {
     const [calorieGoalNum, setCalorieGoalNum] = useState(0)
     const [goals, setGoals] = useState()
     const token = getUserToken()
+    console.log()
 
     const [editForm, setEditForm] = useState({
         calories: "",
