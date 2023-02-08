@@ -14,6 +14,15 @@ function Today() {
     const [meal1Calories, setMeal1Calories] = useState(0)
     const [meal2Calories, setMeal2Calories] = useState(0)
     const [meal3Calories, setMeal3Calories] = useState(0)
+    const [meal1Protein, setMeal1Protein] = useState(0)
+    const [meal2Protein, setMeal2Protein] = useState(0)
+    const [meal3Protein, setMeal3Protein] = useState(0)
+    const [meal1Carbs, setMeal1Carbs] = useState(0)
+    const [meal2Carbs, setMeal2Carbs] = useState(0)
+    const [meal3Carbs, setMeal3Carbs] = useState(0)
+    const [meal1Fat, setMeal1Fat] = useState(0)
+    const [meal2Fat, setMeal2Fat] = useState(0)
+    const [meal3Fat, setMeal3Fat] = useState(0)
     const [averageProteinNum, setAverageProteinNum] = useState(0)
     const [averageCarbsNum, setAverageCarbsNum] = useState(0)
     const [averageFatNum, setAverageFatNum] = useState(0)
@@ -24,10 +33,14 @@ function Today() {
     const [goals, setGoals] = useState()
     const token = getUserToken()
     const totalCalories = meal1Calories + meal3Calories + meal2Calories
+    const totalProtein = meal1Protein + meal3Protein + meal2Protein
+    const totalCarbs = meal1Carbs + meal3Carbs + meal2Carbs
+    const totalFat = meal1Fat + meal3Fat + meal2Fat
 
 
-    console.log(meal1Calories)
     console.log(totalCalories)
+    console.log(totalCarbs)
+    console.log(meal3Protein)
 
     const [editForm, setEditForm] = useState({
         calories: "",
@@ -137,10 +150,6 @@ function Today() {
                 let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
                 array.push(mealItem[i].calories)
                 sum += array[i]
-            }
-            if (sum > calorieGoal) {
-                setMeal1Calories(0)
-            } else {
                 setMeal1Calories(sum)
             }
         } catch (err) {
@@ -149,6 +158,65 @@ function Today() {
     }
     useEffect(() => {
         meal1Sum()
+    }, [mealItem])
+
+    async function meal1ProteinSum() {
+        const array = []
+        let sum = 0
+        let calorieGoal = 2000
+        try {
+            for (let i = 0; i < mealItem.length; i++) {
+                let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
+                array.push(mealItem[i].protein)
+                sum += array[i]
+                setMeal1Protein(sum)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        meal1ProteinSum()
+    }, [mealItem])
+
+    async function meal1CarbsSum() {
+        const array = []
+        let sum = 0
+        let calorieGoal = 2000
+        try {
+            for (let i = 0; i < mealItem.length; i++) {
+                let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
+                array.push(mealItem[i].carbohydrates)
+                sum += array[i]
+                setMeal1Carbs(sum)
+                console.log(meal1Carbs)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        meal1CarbsSum()
+    }, [mealItem])
+
+    async function meal1FatSum() {
+        const array = []
+        let sum = 0
+        let calorieGoal = 2000
+        try {
+            for (let i = 0; i < mealItem.length; i++) {
+                let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
+                array.push(mealItem[i].fat)
+                sum += array[i]
+                setMeal1Fat(sum)
+                console.log(meal1Fat)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        meal1FatSum()
     }, [mealItem])
 
     async function meal2Sum() {
@@ -174,6 +242,66 @@ function Today() {
         meal2Sum()
     }, [breakfastItem])
 
+    async function meal2ProteinSum() {
+        const array = []
+        let sum = 0
+        let calorieGoal = 2000
+        try {
+            for (let i = 0; i < mealItem.length; i++) {
+                let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
+                array.push(breakfastItem[i].protein)
+                sum += array[i]
+                console.log(sum)
+                setMeal2Protein(sum)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        meal2ProteinSum()
+    }, [breakfastItem])
+
+    async function meal2CarbsSum() {
+        const array = []
+        let sum = 0
+        let calorieGoal = 2000
+        try {
+            for (let i = 0; i < breakfastItem.length; i++) {
+                let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
+                array.push(breakfastItem[i].carbohydrates)
+                sum += array[i]
+                setMeal2Carbs(sum)
+                console.log(meal2Carbs)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        meal2CarbsSum()
+    }, [breakfastItem])
+
+    async function meal2FatSum() {
+        const array = []
+        let sum = 0
+        let calorieGoal = 2000
+        try {
+            for (let i = 0; i < breakfastItem.length; i++) {
+                let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
+                array.push(breakfastItem[i].fat)
+                sum += array[i]
+                setMeal2Fat(sum)
+                console.log(meal2Fat)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        meal2FatSum()
+    }, [breakfastItem])
+
     async function meal3Sum() {
         const array = []
         let sum = 0
@@ -195,6 +323,66 @@ function Today() {
     }
     useEffect(() => {
         meal3Sum()
+    }, [lunchItem])
+
+    async function meal3ProteinSum() {
+        const array = []
+        let sum = 0
+        let calorieGoal = 2000
+        try {
+            for (let i = 0; i < mealItem.length; i++) {
+                let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
+                array.push(lunchItem[i].protein)
+                sum += array[i]
+                console.log(sum)
+                setMeal3Protein(sum)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        meal3ProteinSum()
+    }, [lunchItem])
+
+    async function meal3CarbsSum() {
+        const array = []
+        let sum = 0
+        let calorieGoal = 2000
+        try {
+            for (let i = 0; i < lunchItem.length; i++) {
+                let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
+                array.push(lunchItem[i].carbohydrates)
+                sum += array[i]
+                setMeal3Carbs(sum)
+                console.log(meal3Carbs)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        meal3CarbsSum()
+    }, [lunchItem])
+
+    async function meal3FatSum() {
+        const array = []
+        let sum = 0
+        let calorieGoal = 2000
+        try {
+            for (let i = 0; i < lunchItem.length; i++) {
+                let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
+                array.push(lunchItem[i].fat)
+                sum += array[i]
+                setMeal3Fat(sum)
+                console.log(meal3Fat)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        meal3FatSum()
     }, [lunchItem])
 
     async function average() {
@@ -231,17 +419,26 @@ function Today() {
     async function averageProtein() {
         const array = []
         let sum = 0
-        try {
-            let proteinGoal = goals[0].protein
-            for (let i = 0; i < mealItem.length; i++) {
-                let num = sum / proteinGoal
-                array.push(mealItem[i].protein)
-                sum += array[i]
+        // try {
+        //     let proteinGoal = goals[0].protein
+        //     for (let i = 0; i < mealItem.length; i++) {
+        //         let num = sum / proteinGoal
+        //         array.push(mealItem[i].protein)
+        //         sum += array[i]
 
-            } if (sum > proteinGoal) {
+        //     } if (sum > proteinGoal) {
+        //         setAverageProteinNum(100)
+        //     } else {
+        //         setAverageProteinNum((sum / proteinGoal) * 100)
+        //     }
+        // } catch (err) {
+        //     console.log(err)
+        // }
+        try {
+            if (totalProtein > goals[0].protein) {
                 setAverageProteinNum(100)
             } else {
-                setAverageProteinNum((sum / proteinGoal) * 100)
+                setAverageProteinNum((totalProtein / goals[0].protein) * 100)
             }
         } catch (err) {
             console.log(err)
@@ -250,41 +447,62 @@ function Today() {
     async function averageCarbs() {
         const array = []
         let sum = 0
-        try {
-            let carbsGoal = goals[0].carbohydrates
-            for (let i = 0; i < mealItem.length; i++) {
-                let num = sum / carbsGoal
-                array.push(mealItem[i].carbohydrates)
-                sum += array[i]
+        // try {
+        //     let carbsGoal = goals[0].carbohydrates
+        //     for (let i = 0; i < mealItem.length; i++) {
+        //         let num = sum / carbsGoal
+        //         array.push(mealItem[i].carbohydrates)
+        //         sum += array[i]
 
-            } if (sum > carbsGoal) {
+        //     } if (sum > carbsGoal) {
+        //         setAverageCarbsNum(100)
+        //     } else {
+        //         setAverageCarbsNum((sum / carbsGoal) * 100)
+        //     }
+        // } catch (err) {
+        //     console.log(err)
+        // }
+        try {
+            if (totalCarbs > goals[0].carbohydrates) {
                 setAverageCarbsNum(100)
             } else {
-                setAverageCarbsNum((sum / carbsGoal) * 100)
+                setAverageCarbsNum((totalCarbs / goals[0].carbohydrates) * 100)
             }
         } catch (err) {
             console.log(err)
         }
     }
+    
     async function averageFat() {
         const array = []
         let sum = 0
-        try {
-            let fatGoal = goals[0].fat
-            for (let i = 0; i < mealItem.length; i++) {
-                let num = sum / fatGoal
-                array.push(mealItem[i].fat)
-                sum += array[i]
+        // try {
+        //     let carbsGoal = goals[0].carbohydrates
+        //     for (let i = 0; i < mealItem.length; i++) {
+        //         let num = sum / carbsGoal
+        //         array.push(mealItem[i].carbohydrates)
+        //         sum += array[i]
 
-            } if (sum > fatGoal) {
+        //     } if (sum > carbsGoal) {
+        //         setAverageFatNum(100)
+        //     } else {
+        //         setAverageFatNum((sum / carbsGoal) * 100)
+        //     }
+        // } catch (err) {
+        //     console.log(err)
+        // }
+        try {
+            if (totalFat > goals[0].carbohydrates) {
                 setAverageFatNum(100)
             } else {
-                setAverageFatNum((sum / fatGoal) * 100)
+                setAverageFatNum((totalFat / goals[0].fat) * 100)
             }
         } catch (err) {
             console.log(err)
         }
     }
+    
+
     const handleChange = (e) => {
         const userInput = { ...editForm }
         userInput[e.target.name] = e.target.value
