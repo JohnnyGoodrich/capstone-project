@@ -472,7 +472,7 @@ function Today() {
             console.log(err)
         }
     }
-    
+
     async function averageFat() {
         const array = []
         let sum = 0
@@ -501,7 +501,7 @@ function Today() {
             console.log(err)
         }
     }
-    
+
 
     const handleChange = (e) => {
         const userInput = { ...editForm }
@@ -595,19 +595,28 @@ function Today() {
                         </div>
                     </div>
                     <div className='progress-box'>
-                        <h3 id='goal-text'>Current Protein goal: <span className='averageRating'>{goals[0].protein}</span>g</h3>
+                        <div>
+                            <h3 id='goal-text'>Current Protein goal: <span className='averageRating'>{goals[0].protein}g</span></h3>
+                            <div id='goal-text' >Total protein consumed today: <span className='averageRating'>{totalProtein}</span></div>
+                        </div>
                         <div id="progress" >
                             <div data-num={averageProteinNum} className="progress-item">ds</div>
                         </div>
                     </div>
                     <div className='progress-box'>
-                        <h3 id='goal-text'>Current Carb goal: <span className='averageRating'>{goals[0].carbohydrates}</span>g</h3>
+                        <div>
+                        <h3 id='goal-text'>Current Carbohydrate goal: <span className='averageRating'>{goals[0].carbohydrates}g</span></h3>
+                        <div id='goal-text' >Total carbohydrates consumed today: <span className='averageRating'>{totalCarbs}</span></div>
+                        </div>
                         <div id="progress" >
                             <div data-num={averageCarbsNum} className="progress-item">ds</div>
                         </div>
                     </div>
                     <div className='progress-box'>
-                        <h3 id='goal-text'>Current Fat goal: <span className='averageRating'>{goals[0].fat}</span>g</h3>
+                        <div>
+                        <h3 id='goal-text'>Current Fat goal: <span className='averageRating'>{goals[0].fat}g</span></h3>
+                        <div id='goal-text' >Total Fat consumed today: <span className='averageRating'>{totalFat}</span></div>
+                        </div>
                         <div id="progress" >
                             <div data-num={averageFatNum} className="progress-item">ds</div>
                         </div>
