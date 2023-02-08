@@ -37,11 +37,6 @@ function Today() {
     const totalCarbs = meal1Carbs + meal3Carbs + meal2Carbs
     const totalFat = meal1Fat + meal3Fat + meal2Fat
 
-
-    console.log(totalCalories)
-    console.log(totalCarbs)
-    console.log(meal3Protein)
-
     const [editForm, setEditForm] = useState({
         calories: "",
         protein: "",
@@ -189,7 +184,6 @@ function Today() {
                 array.push(mealItem[i].carbohydrates)
                 sum += array[i]
                 setMeal1Carbs(sum)
-                console.log(meal1Carbs)
             }
         } catch (err) {
             console.log(err)
@@ -209,7 +203,6 @@ function Today() {
                 array.push(mealItem[i].fat)
                 sum += array[i]
                 setMeal1Fat(sum)
-                console.log(meal1Fat)
             }
         } catch (err) {
             console.log(err)
@@ -251,7 +244,6 @@ function Today() {
                 let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
                 array.push(breakfastItem[i].protein)
                 sum += array[i]
-                console.log(sum)
                 setMeal2Protein(sum)
             }
         } catch (err) {
@@ -292,7 +284,6 @@ function Today() {
                 array.push(breakfastItem[i].fat)
                 sum += array[i]
                 setMeal2Fat(sum)
-                console.log(meal2Fat)
             }
         } catch (err) {
             console.log(err)
@@ -334,7 +325,6 @@ function Today() {
                 let num = document.querySelector("progress-bar progress-bar-striped active col-xs-9")
                 array.push(lunchItem[i].protein)
                 sum += array[i]
-                console.log(sum)
                 setMeal3Protein(sum)
             }
         } catch (err) {
@@ -355,7 +345,6 @@ function Today() {
                 array.push(lunchItem[i].carbohydrates)
                 sum += array[i]
                 setMeal3Carbs(sum)
-                console.log(meal3Carbs)
             }
         } catch (err) {
             console.log(err)
@@ -375,7 +364,6 @@ function Today() {
                 array.push(lunchItem[i].fat)
                 sum += array[i]
                 setMeal3Fat(sum)
-                console.log(meal3Fat)
             }
         } catch (err) {
             console.log(err)
@@ -386,25 +374,6 @@ function Today() {
     }, [lunchItem])
 
     async function average() {
-
-        const array = []
-        let sum = 0
-        // try {
-        //     let calorieGoal = goals[0].calories
-        //     for (let i = 0; i < mealItem.length; i++) {
-        //         let num = sum / calorieGoal
-        //         array.push(mealItem[i].calories)
-        //         sum += array[i]
-        //     }
-        //     if (sum > calorieGoal) {
-        //         setAverageRating(100)
-        //     } else {
-
-        //         setAverageRating((sum / calorieGoal) * 100)
-        //     }
-        // } catch (err) {
-        //     console.log(err)
-        // }
         try {
             if (totalCalories > goals[0].calories) {
                 setAverageRating(100)
@@ -417,23 +386,6 @@ function Today() {
     }
 
     async function averageProtein() {
-        const array = []
-        let sum = 0
-        // try {
-        //     let proteinGoal = goals[0].protein
-        //     for (let i = 0; i < mealItem.length; i++) {
-        //         let num = sum / proteinGoal
-        //         array.push(mealItem[i].protein)
-        //         sum += array[i]
-
-        //     } if (sum > proteinGoal) {
-        //         setAverageProteinNum(100)
-        //     } else {
-        //         setAverageProteinNum((sum / proteinGoal) * 100)
-        //     }
-        // } catch (err) {
-        //     console.log(err)
-        // }
         try {
             if (totalProtein > goals[0].protein) {
                 setAverageProteinNum(100)
@@ -445,23 +397,6 @@ function Today() {
         }
     }
     async function averageCarbs() {
-        const array = []
-        let sum = 0
-        // try {
-        //     let carbsGoal = goals[0].carbohydrates
-        //     for (let i = 0; i < mealItem.length; i++) {
-        //         let num = sum / carbsGoal
-        //         array.push(mealItem[i].carbohydrates)
-        //         sum += array[i]
-
-        //     } if (sum > carbsGoal) {
-        //         setAverageCarbsNum(100)
-        //     } else {
-        //         setAverageCarbsNum((sum / carbsGoal) * 100)
-        //     }
-        // } catch (err) {
-        //     console.log(err)
-        // }
         try {
             if (totalCarbs > goals[0].carbohydrates) {
                 setAverageCarbsNum(100)
@@ -474,23 +409,6 @@ function Today() {
     }
 
     async function averageFat() {
-        const array = []
-        let sum = 0
-        // try {
-        //     let carbsGoal = goals[0].carbohydrates
-        //     for (let i = 0; i < mealItem.length; i++) {
-        //         let num = sum / carbsGoal
-        //         array.push(mealItem[i].carbohydrates)
-        //         sum += array[i]
-
-        //     } if (sum > carbsGoal) {
-        //         setAverageFatNum(100)
-        //     } else {
-        //         setAverageFatNum((sum / carbsGoal) * 100)
-        //     }
-        // } catch (err) {
-        //     console.log(err)
-        // }
         try {
             if (totalFat > goals[0].carbohydrates) {
                 setAverageFatNum(100)

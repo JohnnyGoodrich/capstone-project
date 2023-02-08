@@ -300,41 +300,6 @@ const Search = (props) => {
         }
     }
 
-
-
-
-
-    // useEffect(() => {
-    //     totalCalories()
-    // }, [])
-
-    let items = document.querySelectorAll('.progress-item');
-    const counters = Array(items.length);
-    const intervals = Array(items.length);
-    counters.fill(0);
-    items.forEach((number, index) => {
-        intervals[index] = setInterval(() => {
-            if (counters[index] == parseInt(number.dataset.num)) {
-                clearInterval(intervals[index]);
-            } else {
-                counters[index] += 1;
-                number.style.background = "conic-gradient(darkcyan calc(" + counters[index] + "%), lightgrey 0deg)";
-                number.setAttribute('data-value', counters[index] + "%");
-                number.innerHTML = counters[index] + "%";
-            }
-        }, 15);
-    });
-    // async function totalCalories(){
-    //     const total = averageRating+meal3Calories+meal2Calories
-    //     let calorieSum = total
-    //     if (totalCaloriesConsumed != null){
-    //     calorieSum = (averageRating+meal3Calories+meal2Calories)
-    //     SetTotalCaloriesConsumed(calorieSum)
-    //     }else{
-    //         return 0
-    //     }
-    // }
-
     async function meal1Sum() {
         const array = []
         let sum = 0
