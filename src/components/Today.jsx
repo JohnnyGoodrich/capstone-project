@@ -45,7 +45,7 @@ function Today() {
     })
 
     const mealURL = `https://capstone-nutrition-app.herokuapp.com/meal/63e05088c1ea98433aebbf23`
-    const goalURL = `http://localhost:4000/goals`
+    const goalURL = `https://capstone-nutrition-app.herokuapp.com/goals`
     const mealURL3 = `https://capstone-nutrition-app.herokuapp.com/meal/63dfe532c1ea98433aebba9f`
     const mealURL4 = `https://capstone-nutrition-app.herokuapp.com/meal/63dfee07c1ea98433aebbaab`
 
@@ -539,7 +539,7 @@ function Today() {
                             <div data-num={averageFatNum} className="progress-item">ds</div>
                         </div>
                     </div>
-                </div>) : (<p>loading</p>)}
+                </div>) : (<p>loading...</p>)}
         </div>
     )
 

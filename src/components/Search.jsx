@@ -9,7 +9,7 @@ import Popup from 'reactjs-popup';
 
 const Search = (props) => {
     const [searchValue, setSearchValue] = useState('')
-    const [movies, setMovies] = useState('')
+    
     const [food, setFood] = useState(null)
     const [apiFoods, setApiFoods] = useState(null)
     const [mealItem, setMealItem] = useState(null)
