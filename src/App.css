@@ -8,10 +8,18 @@
   margin: 0;
   padding: 0;
 }
+html{
+  background-color: lightblue;
+}
+.app{
+  background-color: lightblue;
+}
+
 
 body {
-  background-image: url("https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  /* background-image: url("https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
   /* background-image: url("https://cdn.discordapp.com/ephemeral-attachments/1008571023047798794/1072958073372676196/grid_0.webp"); */
+  background-color: cyan;
   background-size: 100% 100%;
   margin: 0px;
   background-repeat: no-repeat;
