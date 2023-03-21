@@ -9,7 +9,7 @@ import Popup from 'reactjs-popup';
 
 const Search = (props) => {
     const [searchValue, setSearchValue] = useState('')
-    
+
     const [food, setFood] = useState(null)
     const [apiFoods, setApiFoods] = useState(null)
     const [mealItem, setMealItem] = useState(null)
@@ -131,7 +131,7 @@ const Search = (props) => {
 
 
     const onChange = (event) => {
-        setSearchValue(event.target.value)
+        setSearchValue(event.target.value.toLowerCase())
     }
     const onSearch = (searchItem) => {
         setSearchValue(searchItem)
@@ -399,12 +399,11 @@ const Search = (props) => {
         }
     }
 
-
     return (
         <div className="search-context">
             <div className='search-context2'>
                 <div className="search-context-inner">
-                    <input type="text" onChange={onChange} id="search" autoComplete="off" placeholder="Search foods..." />
+                    <input type="text" onChange={onChange} id="search" autoComplete="off" placeholder="Search foods..."/>
 
                 </div>
                 <div className="drop-down-list">
