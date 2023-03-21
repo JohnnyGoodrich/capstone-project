@@ -255,6 +255,10 @@ html[data-theme='light'] .popup-arrow>svg {
 @media screen and (max-width:410px) {
   .active-content {
     padding-left: 2px;
+    padding-right: 20px;
+  }
+  .content{
+    
   }
 
   .all-foods2 {
