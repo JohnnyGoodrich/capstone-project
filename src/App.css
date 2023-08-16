@@ -9,17 +9,26 @@
   padding: 0;
 }
 html{
-  background-color: lightblue;
+  background-color: rgb(216, 237, 249);
+  background-color: #B8D8D8;
+  
+  
 }
 .app{
-  background-color: lightblue;
+  
+  background-color: rgb(216, 237, 249);
+  background-color: #B8D8D8;
 }
 
+.active-tabs::before{
+  background: darkcyan !important;
+  background: #7a9e9f !important;
+}
 
 body {
-  /* background-image: url("https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
-  /* background-image: url("https://cdn.discordapp.com/ephemeral-attachments/1008571023047798794/1072958073372676196/grid_0.webp"); */
-  background-color: cyan;
+  background-image: url("https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); 
+  background-image: url("https://cdn.discordapp.com/ephemeral-attachments/1008571023047798794/1072958073372676196/grid_0.webp");
+  /* background-color: cyan; */
   background-size: 100% 100%;
   margin: 0px;
   background-repeat: no-repeat;
